@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+
+/******** Global Style ********/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font: 16px "PT Sans", sans-serif;
+}
+
+h1{
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2{
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+h3{
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+h4{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h5{
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h6{
+  color: #d8d8d8;
+}
+
+button {
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+}
+
+/* button:hover {
+  background-color: coral;
+} */
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+
+/********Navbar*******/
+
+.nav-buttons {
+  margin-left: 60%;
+}
+
+.navbar{
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  font-size: 16px;
+  left: 0;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  top: 0;
+}
+
+.navbar-nav,
+.nav-link {
+  color: #000;
+  padding: 0 20px;
+  transition: 0.4s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar i:hover,
+.navbar i:hover
+{
+  color: #fb774b;
+}
+
+.navbar i {
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 5px;
+  padding: 0 0.7px;
+  transition: 0.4s ease;
+}
+
+.navbar .brand
+{
+  color: #fb774b;
+  margin: 3px 5px;
+  font-size: 1.5rem;
+}
+
+/*******Home*******/
+
+#home-top{
+  background-image: url('../images/banner.jpeg');
+  background-position-x: center;
+  background-position-y: 70px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 60vh;
+  width: 100%; 
+  
+}
+
+/****** Featured Products ********/
+
+.product {
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.product img {
+  transition: 0.3s all;
+}
+
+.product:hover {
+  opacity: 0.7;
+}
+
+.product .buy-btn {
+  background-color: #fb774b;
+  /* transform: translateY(50px);
+  opacity: 0;
+  transition: 0.3 all; */
+}
+
+.product:hover .buy-btn {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+hr {
+  width: 30px;
+  height: 3px;
+  opacity: 1;
+  background-color: #fb774b;
+}
+
+/* .star {
+  padding: 10px 0;
+}
+
+.star i {
+  font-size: 0.9rem;
+  color: goldenrod;
+} */
+
+/******* Footer *********/
+
+footer {
+  background-color: #222222;
+}
+
+footer h5 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+footer li {
+  padding-bottom: 4px;
+}
+
+footer li a {
+  font-size: 0.8rem;
+  color: #999;
+  text-decoration: none;
+}
+
+footer li a:hover {
+  color: #d8d8d8
+}
+
+footer .copyright a {
+  color: #000;
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  display: inline-block;
+  text-align: center;
+  line-height: 38px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  margin: 0 5px;
+}
+
+footer .copyright a:hover {
+  color: #fff;
+  background-color: #fb774b;
+}
+
+footer p {
+  color: #999;
+}
+
+footer .copyright img {
+  width: 30%;
+}
+
+/****************** Media Queries Starts Here *******************/
+
+/**************** 990 ******************/
+
+@media only screen and (max-width: 990px) {
+
+  .nav-buttons{
+    margin: 10px;
+  }
+
+  .nav-buttons ul {
+    margin: 1rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .nav-buttons ul .fas {
+    margin: 20px 5px 10px 20px;
+  }
+}
