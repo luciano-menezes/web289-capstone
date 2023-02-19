@@ -46,7 +46,7 @@ button {
   font-weight: 900;
   outline: none;
   border: none;
-  background-color: #000;
+  background-color: #3e2e23;
   color: #fff;
   padding: 13px 30px;
   text-transform: uppercase;
@@ -90,7 +90,7 @@ button {
 .navbar i:hover,
 .navbar i:hover
 {
-  color: #fb774b;
+  color: #3e2e23;
 }
 
 .navbar i {
@@ -103,15 +103,16 @@ button {
 
 .navbar .brand
 {
-  color: #fb774b;
+  color: #3e2e23;
   margin: 3px 5px;
   font-size: 1.5rem;
 }
 
-/*******Home*******/
+/*******Banner*******/
 
-#home-top{
-  background-image: url('../images/banner.jpeg');
+#banner{
+  background-image: url('../images/banner-test.jpeg');
+  background-attachment: fixed;
   background-position-x: center;
   background-position-y: 70px;
   background-size: cover;
@@ -119,7 +120,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 60vh;
+  height: 100vh;
   width: 100%; 
   
 }
@@ -140,7 +141,7 @@ button {
 }
 
 .product .buy-btn {
-  background-color: #fb774b;
+  background-color: #3e2e23;
   /* transform: translateY(50px);
   opacity: 0;
   transition: 0.3 all; */
@@ -152,10 +153,10 @@ button {
 }
 
 hr {
-  width: 30px;
+  width: 80%;
   height: 3px;
   opacity: 1;
-  background-color: #fb774b;
+  background-color: #3e2e23;
 }
 
 /* .star {
@@ -167,6 +168,8 @@ hr {
   color: goldenrod;
 } */
 
+
+
 /******* Footer *********/
 
 footer {
@@ -177,6 +180,19 @@ footer h5 {
   color: #fff;
   font-weight: 700;
   font-size: 1.2rem;
+}
+/*********** Single Product Page ************/
+
+.single-product input {
+  width: 50px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.single-product input:focus {
+  outline: none;
 }
 
 footer li {
