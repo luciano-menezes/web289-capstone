@@ -16,3 +16,5 @@ header("Expires: 0");
 require_once('connection.php');
 //require_once('query_functions.php');
 //require_once('validation_functions.php');
+
+$connection = db_connect();
