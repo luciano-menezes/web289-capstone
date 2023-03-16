@@ -1,9 +1,10 @@
-<?php require_once('../private/initialize.php'); ?>
-
 <?php
-session_start()
+require_once('../private/initialize.php');
 
+session_start()
 ?>
+
+
 
 <?php
 $page_title = 'Payment';
@@ -17,8 +18,12 @@ include(SHARED_PATH . '/header.php');
     <hr class="mx-auto">
   </div>
   <div class="mx-auto container text-center">
-    <p>Total payment: $<?php echo $_SESSION['total'] ?></p>
-    <input class="btn btn-primary" type="submit" value="Pay Now">
+    <p>Total payment: $<?php if (isset($_SESSION['total'])) {
+                          echo $_SESSION['total'];
+                        } ?></p>
+    <?php if (isset($_SESSION['total'])) { ?>
+      <input class="btn btn-primary" type="submit" value="Pay Now">
+    <?php  } ?>
   </div>
 </section>
 

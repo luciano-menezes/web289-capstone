@@ -12,7 +12,7 @@ header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-//require_once('functions.php');
+require_once('functions.php');
 require_once('connection.php');
 //require_once('query_functions.php');
 //require_once('validation_functions.php');

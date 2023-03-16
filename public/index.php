@@ -4,7 +4,7 @@
 
 <!-- The page title and the header file. -->
 <?php
-$page_title = 'Home Page';
+$page_title = 'Home';
 include(SHARED_PATH . '/header.php');
 ?>
 
@@ -14,7 +14,7 @@ include(SHARED_PATH . '/header.php');
     <h1>Welcome To Healing Food Craft</h1>
     <h2><span>Best Prices</span> This Season</h2>
     <h3>Making spaces beautiful and functional</h3>
-    <button>Shop Now</button>
+    <!-- <button>Shop Now</button> -->
   </div>
 </header>
 

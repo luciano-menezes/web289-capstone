@@ -145,7 +145,7 @@ button {
 
 #banner{
   align-items: flex-start;
-  background-image: url('../images/banner-test.jpeg');
+  background-image: url('../images/banner.jpeg');
   background-attachment: fixed;
   background-position-x: center;
   background-position-y: 70px;
@@ -350,20 +350,6 @@ th:last-child {
   justify-content: flex-end;
 }
 
-#login-form input {
-  margin: 5px auto;
-  width: 50%;
-}
-
-#login-form #login-btn {
-  background-color: #fb774b;
-  color: #fff;
-}
-
-#login-form #register-url {
-  color: #fb774b;
-}
-
 /***************** Checkout *****************/
 
 #checkout-form .form-group {
@@ -383,6 +369,114 @@ th:last-child {
 #checkout-form #checkout-btn {
   color: #fff;
   background-color: #3e2e23;
+}
+
+/*************** Login Page ***************/
+
+#login-form {
+  width: 50%;
+  margin: 5px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+#login-form input {
+  margin: 5px auto;
+  width: 50%;
+}
+
+#login-form #login-btn {
+  background-color: #3e2e23;
+  color: #fff;
+}
+
+#login-form #register-url {
+  color: #3e2e23;
+}
+
+/************ Sign Up Page *****************/
+
+#signup-form {
+  margin: 5px auto;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+#signup-form input {
+  margin: 5px auto;
+  width: 50%;
+}
+
+#signup-form #signup-btn {
+  background-color: #3e2e23;
+  color: #fff;
+}
+
+#signup-form #login-url {
+  color: #3e2e23;
+}
+
+/********* Account Page **************/
+
+#account-form {
+  margin: 35px;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+#account-form input {
+  margin: 5px auto;
+}
+
+#account-form #change-pass-btn {
+  color: #fff;
+  background-color: #3e2e23;
+}
+
+.account-info #orders-btn,
+#logout-btn {
+  color: #3e2e23;
+  text-decoration: none;
+}
+
+/************ Orders ********************/
+
+.orders table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders .product-info{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.orders th{
+  padding: 5px 20px;
+  color: #fff;
+  background-color: #3e2e23;
+  /* text-align: left; */
+}
+
+.orders th:nth-child(2){
+  /* text-align: right; */
+}
+
+.orders td{
+  padding: 10px 20px;
+}
+
+.orders td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.orders .order-details-btn{
+  color:#fff;
+  background-color: #fb774b;;
 }
 
 /****************** Media Queries Starts Here *******************/
