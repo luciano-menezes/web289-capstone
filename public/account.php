@@ -53,7 +53,9 @@ if (isset($_POST['change_password'])) {
 //get order
 if (isset($_SESSION['logged_in'])) {
   $user_id = $_SESSION['user_id'];
-  $stmt = $connection->prepare("SELECT * FROM `order` JOIN image ON order.order_id = image.product_id WHERE user_id=?");
+  // $stmt = $connection->prepare("SELECT * FROM `order` JOIN image ON order.order_id = image.product_id WHERE user_id=?");
+  $stmt = $connection->prepare("SELECT * FROM `order` WHERE user_id=?");
+
   $stmt->bind_param('i', $user_id);
   $stmt->execute();
 
@@ -130,25 +132,30 @@ include(SHARED_PATH . '/header.php');
       <th>Order ID</th>
       <th>Order Cost</th>
       <th>Order Date</th>
+      <th>Order Detail</th>
     </tr>
 
     <?php while ($row = $orders->fetch_assoc()) { ?>
 
       <tr>
         <td>
-          <!-- <div class="product-info">
-            <img src="assets/imgs/featured1.jpeg" alt="" width="" height="">
+          <div class="product-info">
+            <!-- <img src="assets/imgs/featured1.jpeg" alt="" width="" height=""> -->
             <div>
               <p class="mt-3"><?php echo $row['order_id']; ?></p>
             </div>
-          </div> -->
-          <span><?php echo $row['order_id']; ?></span>
-        </td>
+          </div>
         <td>
           <span><?php echo $row['total_cost']; ?></span>
         </td>
         <td>
           <span><?php echo $row['order_date']; ?></span>
+        </td>
+
+        <td>
+          <form>
+            <input class="btn order-details-btn" type="submit" value="details">
+          </form>
         </td>
       </tr>
 
