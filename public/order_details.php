@@ -2,8 +2,6 @@
 session_start();
 require_once('../private/initialize.php');
 
-$page_title = 'Account';
-include(SHARED_PATH . '/header.php');
 
 if (isset($_POST['order_details_btn']) && isset($_POST['order_id'])) {
 
@@ -17,9 +15,21 @@ if (isset($_POST['order_details_btn']) && isset($_POST['order_id'])) {
   $stmt->bind_param("i", $order_id);
   $stmt->execute();
   $order_details = $stmt->get_result();
+
+
+  $order_total_price = calculateTotalOrderPrice($order_details);
 } else {
   header('location: account.php');
+  exit;
 }
+
+?>
+
+<?php
+
+$page_title = 'Order Details';
+include(SHARED_PATH . '/header.php');
+
 ?>
 
 <!--Order Details-->
@@ -37,7 +47,7 @@ if (isset($_POST['order_details_btn']) && isset($_POST['order_id'])) {
     </tr>
 
 
-    <?php while ($row = $order_details->fetch_assoc()) { ?>
+    <?php foreach ($order_details as $row) { ?>
       <tr>
         <td>
           <div class="product-info">
@@ -46,6 +56,7 @@ if (isset($_POST['order_details_btn']) && isset($_POST['order_id'])) {
               <p class=" mt-3"><?php echo $row['product_name']; ?></p>
             </div>
           </div>
+        </td>
         <td>
           <span>$<?php echo $row['item_price']; ?></span>
         </td>
@@ -56,6 +67,15 @@ if (isset($_POST['order_details_btn']) && isset($_POST['order_id'])) {
 
     <?php } ?>
   </table>
+
+
+  <!-- Save this payment button form in case I incorporate order status later on -->
+
+  <!-- <form style="float: right;" method="POST" action="payment.php">
+    <input type="hidden" name="order_id" value="<?php echo $order_id; ?>" />
+    <input type="hidden" name="order_total_price" value="<?php echo $order_total_price; ?>">
+    <input type="submit" name="order_pay_btn" class="btn btn-primary" value="Pay Now">
+  </form> -->
 
 </section>
 

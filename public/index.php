@@ -33,7 +33,7 @@ include(SHARED_PATH . '/header.php');
     <div class="row mx-auto container">
       <?php while ($row = $featured_products->fetch_assoc()) { ?>
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img class="img-fluid mb-3" src="images/<?php echo $row['image_name']; ?>" alt="" width="" height="">
+          <img class="img-fluid mb-3" src="images/<?php echo $row['image_name']; ?>">
           <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
           <p class="p-price">$ <?php echo $row['product_price']; ?></p>
           <a href="<?php echo "single_product.php?product_id=" . $row['product_id']; ?>">

@@ -28,11 +28,11 @@ if (isset($_POST['change_password'])) {
 
   //if passwords don't match
   if ($password != $confirm_password) {
-    header('location: account.php?error=passwords don\'t match!');
+    header('location: account.php?error=Passwords don\'t match!');
 
     //if password is less than 6 char
   } else if (strlen($password) < 6) {
-    header('location: account.php?error=password must be at least 6 characters!');
+    header('location: account.php?error=Password must be at least 6 characters!');
 
     //no erros
   } else {
@@ -43,9 +43,9 @@ if (isset($_POST['change_password'])) {
     $stmt->bind_param('ss', $hashed_password, $email);
 
     if ($stmt->execute()) {
-      header('location: account.php?message=password has been updated successfully!');
+      header('location: account.php?message=Password has been updated successfully!');
     } else {
-      header('location: account.php?error=could not update password!');
+      header('location: account.php?error=Could not update password!');
     }
   }
 }
@@ -65,10 +65,19 @@ if (isset($_SESSION['logged_in'])) {
 $page_title = 'Account';
 include(SHARED_PATH . '/header.php');
 ?>
-
+<div id="message"></div>
 <!--Account-->
 <section class="my-5 py-5">
   <div class="row container mx-auto">
+
+    <!-----Message displayed after payment is made-------->
+    <?php
+    if (isset($_GET['payment']) && $_GET['payment'] == 'success') {
+      echo '<div class="alert alert-success" role="alert">
+          Payment successful!
+        </div>';
+    }
+    ?>
 
     <?php if (isset($_GET['payment_message'])) { ?>
       <p class="mt-5 text-center" style="color:green"> <?php echo $_GET['payment_message']; ?></p>
@@ -140,7 +149,6 @@ include(SHARED_PATH . '/header.php');
       <tr>
         <td>
           <div class="product-info">
-            <!-- <img src="assets/imgs/featured1.jpeg" alt="" width="" height=""> -->
             <div>
               <p class="mt-3"><?php echo $row['order_id']; ?></p>
             </div>

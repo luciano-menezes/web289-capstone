@@ -43,13 +43,13 @@ if (!isset($_SESSION['logged_in'])) {
       $product = $_SESSION['cart'][$key];
       $product_id = $product['product_id'];
       $product_price = $product['product_price'];
-      $product_quantity = $product['product_quantity'];
+      $quantity = $product['product_quantity'];
 
       //4. store single item in order_items database
       $stmt1 = $connection->prepare("INSERT INTO `order_item` (order_id, product_id, item_price, quantity)
                           VALUES(?,?,?,?)");
 
-      $stmt1->bind_param('iidi', $order_id, $product_id, $product_price, $product_quantity);
+      $stmt1->bind_param('iidi', $order_id, $product_id, $product_price, $quantity);
       $stmt1->execute();
     }
     //5. remove everything from cart --> delay until payment is done

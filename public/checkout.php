@@ -55,7 +55,7 @@ include(SHARED_PATH . '/header.php');
 
       <div class="form-group checkout-btn-container">
         <p><strong>Total Amount: $ <?php echo $_SESSION['total']; ?></strong></p>
-        <a href="payment.php"><input type="submit" class="btn" id="checkout-btn" name="place_order" value="Place Order"></a>
+        <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Place Order">
       </div>
     </form>
   </div>
