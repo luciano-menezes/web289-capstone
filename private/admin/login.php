@@ -1,5 +1,6 @@
+<?php include('header.php'); ?>
+
 <?php
-session_start();
 require_once('../initialize.php');
 
 if (isset($_SESSION['logged_in'])) {
@@ -45,7 +46,6 @@ if (isset($_POST['login_btn'])) {
 
 <!----------Header-------->
 
-<?php include('header.php'); ?>
 
 <div class="container-fluid">
   <div class="" style="min-height: 1000px">

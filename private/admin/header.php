@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -55,7 +57,9 @@
 
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="logout.php">Sign out</a>
+        <?php if (isset($_SESSION['admin_logged_in'])) { ?>
+          <a class="nav-link px-3" href="logout.php?logout=1">Sign out</a>
+        <?php } ?>
       </div>
     </div>
   </header>
