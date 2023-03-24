@@ -85,8 +85,7 @@ include(SHARED_PATH . '/header.php');
           const payerName = details.payer.name.given_name
           console.log('Transaction completed!')
 
-          // redirect to account page with message
-          // console.log('Payment successful');
+          // redirect to account page after payment and display message
           window.location.href = "account.php?payment=success";
 
         }

@@ -15,6 +15,7 @@ if (isset($_POST['signup'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $confirm_password = $_POST['confirmPassword'];
+  $user_level = 'u';
   $street_1 = $_POST['street1'];
   $street_2 = $_POST['street2'];
   $city = $_POST['city'];
@@ -23,11 +24,11 @@ if (isset($_POST['signup'])) {
 
   //if passwords don't match
   if ($password != $confirm_password) {
-    header('location: signup.php?error=passwords don\'t match');
+    header('location: signup.php?error=Passwords don\'t match');
 
     //if password is less than 6 char
   } else if (strlen($password) < 6) {
-    header('location: signup.php?error=password must be at least 6 characters');
+    header('location: signup.php?error=Password must be at least 6 characters');
 
     //if there is not error
   } else {
@@ -46,18 +47,18 @@ if (isset($_POST['signup'])) {
 
     //if there's a user already registered with this email
     if ($num_rows != 0) {
-      header('location: signup.php?error=this email already exists');
+      header('location: signup.php?error=This email already exists');
 
       //if no user registered with this email before
     } else {
 
       //create a new user
-      $stmt = $connection->prepare("INSERT INTO `user` (first_name, last_name, email, user_password, street_1, street_2, city, state_abbrev, zip_code)
-                          VALUES (?,?,?,?,?,?,?,?,?)");
+      $stmt = $connection->prepare("INSERT INTO `user` (first_name, last_name, email, user_password, user_level, street_1, street_2, city, state_abbrev, zip_code)
+                          VALUES (?,?,?,?,?,?,?,?,?,?)");
       if (!$stmt) {
         die("Error: " . mysqli_error($connection));
       }
-      $stmt->bind_param('sssssssss', $first_name, $last_name, $email, md5($password), $street_1, $street_2, $city, $state, $zip_code);
+      $stmt->bind_param('ssssssssss', $first_name, $last_name, $email, md5($password), $user_level, $street_1, $street_2, $city, $state, $zip_code);
       // $stmt->execute();
       //if account was created successfully  
       if ($stmt->execute()) {
@@ -71,7 +72,7 @@ if (isset($_POST['signup'])) {
 
         //account could not be created
       } else {
-        header('location: signup.php?error=could not create an account at the moment!');
+        header('location: signup.php?error=Could not create an account at the moment!');
       }
     }
   }
@@ -90,7 +91,7 @@ include(SHARED_PATH . '/header.php');
     <hr class="mx-auto">
   </div>
   <div class="mx-auto container">
-    <form id="signup-form" method="post" action="signup.php">
+    <form id="signup-form" method="POST" action="signup.php">
       <p style="color: red;"><?php if (isset($_GET['error'])) {
                                 echo $_GET['error'];
                               } ?></p>
@@ -135,7 +136,7 @@ include(SHARED_PATH . '/header.php');
       </div>
 
       <div class="form-group">
-        <label for="State">State</label>
+        <label for="state">State</label>
         <select type="text" class="form-control" id="checkout-state" name="state" placeholder="State" required>
           <option value="">Select State</option>
           <option value="AL">Alabama</option>
@@ -201,7 +202,7 @@ include(SHARED_PATH . '/header.php');
       </div>
 
       <div class="form-group">
-        <a id="login-url" href="login.php" class="btn">Already have an account? Login</a>
+        <a id="login-url" href="login.php" class="btn">Already have an account? Login!</a>
       </div>
 
     </form>

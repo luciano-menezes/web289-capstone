@@ -245,7 +245,7 @@ footer .copyright a {
 
 footer .copyright a:hover {
   color: #fff;
-  background-color: #fb774b;
+  background-color: #000;
 }
 
 footer p {
@@ -405,7 +405,12 @@ th:last-child {
 
 #signup-form input {
   margin: 5px auto;
-  width: 50%;
+  width: 80%;
+}
+
+#signup-form select {
+  margin: 5px auto;
+  width: 80%;
 }
 
 #signup-form #signup-btn {
@@ -438,6 +443,7 @@ th:last-child {
 .account-info #orders-btn,
 #logout-btn {
   color: #3e2e23;
+  font-weight: 600;
   text-decoration: none;
 }
 
