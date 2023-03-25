@@ -53,7 +53,6 @@ if (isset($_POST['change_password'])) {
 //get order
 if (isset($_SESSION['logged_in'])) {
   $user_id = $_SESSION['user_id'];
-  // $stmt = $connection->prepare("SELECT * FROM `order` JOIN image ON order.order_id = image.product_id WHERE user_id=?");
   $stmt = $connection->prepare("SELECT * FROM `order` WHERE user_id=?");
 
   $stmt->bind_param('i', $user_id);

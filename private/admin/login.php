@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('admin_header.php'); ?>
 
 <?php
 require_once('../initialize.php');

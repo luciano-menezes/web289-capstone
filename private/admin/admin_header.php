@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require_once('../initialize.php'); ?>
 
 <!doctype html>
 <html lang="en">
