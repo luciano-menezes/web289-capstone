@@ -36,11 +36,11 @@ if (isset($_POST['change_password'])) {
 
     //no erros
   } else {
-    // $stmt = $connection->prepare("UPDATE `user` SET user_password=? WHERE email=?");
-    // $stmt->bind_param('ss', md5($password), $email);
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $connection->prepare("UPDATE `user` SET user_password=? WHERE email=?");
-    $stmt->bind_param('ss', $hashed_password, $email);
+    $stmt->bind_param('ss', md5($password), $email);
+    // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // $stmt = $connection->prepare("UPDATE `user` SET user_password=? WHERE email=?");
+    // $stmt->bind_param('ss', $hashed_password, $email);
 
     if ($stmt->execute()) {
       header('location: account.php?message=Password has been updated successfully!');

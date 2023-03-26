@@ -41,7 +41,7 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (1, 'Ceiling Hang Pot Racks'),
 (3, 'Coat Rack'),
-(4, 'Gretting Cards'),
+(4, 'Greeting Cards'),
 (2, 'Jewelry Organizer');
 
 -- --------------------------------------------------------

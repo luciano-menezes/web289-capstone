@@ -164,24 +164,17 @@ button {
   margin-bottom: 2rem;
 }
 
-.product img {
-  transition: 0.3s all;
-}
-
 .product:hover {
   opacity: 0.7;
 }
 
-.product .buy-btn {
-  background-color: #3e2e23;
-  /* transform: translateY(50px);
-  opacity: 0;
-  transition: 0.3 all; */
+.product a {
+  color: #3e2e23;;
+  text-decoration: none;
 }
 
-.product:hover .buy-btn {
-  transform: translateY(0px);
-  opacity: 1;
+.product .buy-btn {
+  background-color: #3e2e23;
 }
 
 hr {

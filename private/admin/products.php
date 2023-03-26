@@ -85,6 +85,22 @@ $products = $stmt2->get_result();
 
 
       <h2>Products</h2>
+      <?php if (isset($_GET['edit_success_message'])) { ?>
+        <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
+      <?php } ?>
+
+      <?php if (isset($_GET['edit_failure_message'])) { ?>
+        <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message'] ?></p>
+      <?php } ?>
+
+      <?php if (isset($_GET['deleted_successfully'])) { ?>
+        <p class="text-center" style="color: green;"><?php echo $_GET['deleted_successfully'] ?></p>
+      <?php } ?>
+
+      <?php if (isset($_GET['deleted_failure'])) { ?>
+        <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
+      <?php } ?>
+
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -111,8 +127,8 @@ $products = $stmt2->get_result();
                 <td><?php echo "$" . $product['product_price']; ?></td>
                 <td><?php echo $product['discount'] . "%"; ?></td>
 
-                <td><a class="btn btn-primary">Edit</a></td>
-                <td><a class="btn btn-danger">Delete</a></td>
+                <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
+                <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>
               </tr>
             <?php } ?>
 

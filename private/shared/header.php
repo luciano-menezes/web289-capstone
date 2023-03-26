@@ -24,7 +24,7 @@ if (!isset($page_title)) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top" role="navigation">
       <div class="container">
-        <img class="logo" src="images/logo.jpeg" alt="" width="" height="">
+        <a href="index.php"><img class="logo" src="images/logo.jpeg" alt="" width="" height=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

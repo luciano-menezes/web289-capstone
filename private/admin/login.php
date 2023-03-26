@@ -23,7 +23,6 @@ if (isset($_POST['login_btn'])) {
     if ($stmt->num_rows() == 1) {
       $stmt->fetch();
 
-      // if ($email == $_POST['email'] && $password == md5($_POST['password'])) {
       $_SESSION['user_id'] = $user_id;
       $_SESSION['first_name'] = $first_name;
       $_SESSION['last_name'] = $last_name;
