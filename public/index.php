@@ -11,8 +11,8 @@ include(SHARED_PATH . '/header.php');
 <!--Home - Top-->
 <header id="banner" role="banner">
   <div class="container">
-    <h1>Welcome To Healing Food Craft</h1>
-    <h2><span>Best Prices</span> This Season</h2>
+    <h1><span>Welcome To</span> My Crafty Mind</h1>
+    <!-- <h2>Best Prices This Season</h2> -->
     <h3>Making spaces beautiful and functional</h3>
     <!-- <button>Shop Now</button> -->
   </div>

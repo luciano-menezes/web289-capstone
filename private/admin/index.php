@@ -1,16 +1,13 @@
 <?php include('admin_header.php'); ?>
 
 <?php
-
 if (!isset($_SESSION['admin_logged_in'])) {
   header('Location: login.php');
   exit();
 }
-
 ?>
 
 <?php
-
 //1. determine page no
 if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
   //if user has already entered page then page number is the one that they selected
@@ -20,15 +17,12 @@ if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
   $page_no = 1;
 }
 
-
-
 //2. return number of products 
 $stmt1 = $connection->prepare("SELECT COUNT(*) As total_records FROM `order`");
 $stmt1->execute();
 $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
-
 
 //3. products per page
 $total_records_per_page = 10;
@@ -42,16 +36,11 @@ $adjacents = "2";
 
 $total_no_of_pages = ceil($total_records / $total_records_per_page);
 
-
-
 //4. get all products
 
 $stmt2 = $connection->prepare("SELECT * FROM `order` LIMIT $offset,$total_records_per_page");
 $stmt2->execute();
 $orders = $stmt2->get_result();
-
-
-
 
 ?>
 
@@ -71,8 +60,6 @@ $orders = $stmt2->get_result();
         </div>
       </div>
 
-
-
       <h2>Orders</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -82,8 +69,8 @@ $orders = $stmt2->get_result();
               <th scope="col">User ID</th>
               <th scope="col">Order Date</th>
               <th scope="col">Total Cost</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
+              <!-- <th scope="col">Edit</th>
+              <th scope="col">Delete</th> -->
             </tr>
           </thead>
           <tbody>
@@ -95,8 +82,8 @@ $orders = $stmt2->get_result();
                 <td><?php echo $order['order_date']; ?></td>
                 <td><?php echo $order['total_cost']; ?></td>
 
-                <td><a class="btn btn-primary">Edit</a></td>
-                <td><a class="btn btn-danger">Delete</a></td>
+                <!-- <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $order['order_id']; ?>">Edit</a></td> -->
+                <!-- <td><a class="btn btn-danger">Delete</a></td> -->
               </tr>
             <?php } ?>
 
@@ -140,12 +127,10 @@ $orders = $stmt2->get_result();
           </ul>
         </nav>
 
-
       </div>
     </main>
   </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 

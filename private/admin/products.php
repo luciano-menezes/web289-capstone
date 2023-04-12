@@ -1,7 +1,6 @@
 <?php include('admin_header.php'); ?>
 
 <?php
-
 if (!isset($_SESSION['admin_logged_in'])) {
   header('Location: login.php');
   exit();
@@ -28,7 +27,7 @@ $stmt1->store_result();
 $stmt1->fetch();
 
 
-//3. products per page
+//3. products per pageThe new product is being created but I'm not being redirected to the 
 $total_records_per_page = 10;
 
 $offset = ($page_no - 1) * $total_records_per_page;
@@ -42,20 +41,7 @@ $total_no_of_pages = ceil($total_records / $total_records_per_page);
 
 //4. get all products
 
-// $stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, c.category_name, i.image_name 
-//                                FROM `product` p 
-//                                LEFT JOIN `category` c ON p.category_id = c.category_id
-//                                LEFT JOIN `image` i ON p.product_id = i.product_id 
-//                                LIMIT $offset,$total_records_per_page");
-
-// $stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, c.category_name, i.image_name, oi.discount
-//                                FROM `product` p 
-//                                LEFT JOIN `category` c ON p.category_id = c.category_id
-//                                LEFT JOIN `image` i ON p.product_id = i.product_id 
-//                                LEFT JOIN `order_item` oi ON p.product_id = oi.product_id
-//                                LIMIT $offset,$total_records_per_page");
-$stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, c.category_name, i.image_name, 
-       (SELECT MAX(oi.discount) FROM order_item oi WHERE oi.product_id = p.product_id) AS discount
+$stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, c.category_name, i.image_name 
 FROM `product` p 
 LEFT JOIN `category` c ON p.category_id = c.category_id
 LEFT JOIN `image` i ON p.product_id = i.product_id 
@@ -63,7 +49,6 @@ LIMIT $offset, $total_records_per_page");
 
 $stmt2->execute();
 $products = $stmt2->get_result();
-
 ?>
 
 <div class="container-fluid">
@@ -101,6 +86,24 @@ $products = $stmt2->get_result();
         <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
       <?php } ?>
 
+      <?php if (isset($_GET['product_created'])) { ?>
+        <p class="text-center" style="color: green;"><?php echo $_GET['product_created']; ?></p>
+      <?php } ?>
+
+      <?php if (isset($_GET['product_failed'])) { ?>
+        <p class="text-center" style="color: red;"><?php echo $_GET['product_failed']; ?></p>
+      <?php } ?>
+
+      <?php if (isset($_GET['images_updated'])) { ?>
+        <p class="text-center" style="color: green;"><?php echo $_GET['images_updated']; ?></p>
+      <?php } ?>
+
+      <?php if (isset($_GET['images_failed'])) { ?>
+        <p class="text-center" style="color: red;"><?php echo $_GET['images_failed']; ?></p>
+      <?php } ?>
+
+
+      <p class="text-center"></p>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -110,7 +113,6 @@ $products = $stmt2->get_result();
               <th scope="col">Product Name</th>
               <th scope="col">Product Category</th>
               <th scope="col">Product Price</th>
-              <th scope="col">Product Discount</th>
 
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
@@ -125,7 +127,6 @@ $products = $stmt2->get_result();
                 <td><?php echo $product['product_name']; ?></td>
                 <td><?php echo $product['category_name']; ?></td>
                 <td><?php echo "$" . $product['product_price']; ?></td>
-                <td><?php echo $product['discount'] . "%"; ?></td>
 
                 <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
                 <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>

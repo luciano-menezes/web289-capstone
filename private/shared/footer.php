@@ -4,7 +4,7 @@
 <footer class="mt-5 py-5" role="contentinfo">
   <div class="row container mx-auto pt-5">
     <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-      <a href="index.php"><img class="logo" src="images/logo.jpeg" alt="" width="" height=""></a>
+      <a href="index.php"><img class="logo" src="images/logo.png" alt="" width="" height=""></a>
       <p class="pt-3">Making spaces beautiful and functional</p>
     </div>
     <div class="footer-one col-lg-3 col-md-6 col-sm-12">

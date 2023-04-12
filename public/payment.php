@@ -15,8 +15,6 @@ include(SHARED_PATH . '/header.php');
 
 <!--Payment-->
 
-
-
 <section class="my-5 py-5">
   <div class="container text-center mt-3 pt-5">
     <h2 class="form-weight-bold">Payment</h2>
