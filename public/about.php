@@ -1,4 +1,7 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
+//session_start();
+require_once('../private/initialize.php');
+?>
 
 <!-- The page title and the header file. -->
 <?php

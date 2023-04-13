@@ -1,5 +1,7 @@
 <!-- establish a connection to the database and define constants for paths -->
-<?php require_once('../private/initialize.php');
+<?php
+//session_start();
+require_once('../private/initialize.php');
 ?>
 
 <?php

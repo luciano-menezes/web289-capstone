@@ -1,11 +1,12 @@
 <!-- establish a connection to the database and define constants for paths -->
-<?php require_once('../private/initialize.php'); ?>
-<?php include('../private/get_featured_products.php'); ?>
-
-<!-- The page title and the header file. -->
 <?php
+//session_start();
+require_once('../private/initialize.php');
+
 $page_title = 'Home';
 include(SHARED_PATH . '/header.php');
+
+include('../private/get_featured_products.php');
 ?>
 
 <!--Home - Top-->

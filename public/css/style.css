@@ -325,6 +325,15 @@ footer .copyright img {
   width: 100%;
 }
 
+.cart-quantity {
+  /* background-color: blue;
+  border-radius: 50%;
+  color: #fff; */
+  font-size: 1rem;
+  margin: -2px;
+  padding: 2px 5px;
+}
+
 td:last-child {
   text-align: right;
 }

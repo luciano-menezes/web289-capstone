@@ -1,7 +1,7 @@
 <?php
 require_once('../private/initialize.php');
 
-session_start();
+//session_start();
 
 if (isset($_POST['order_pay_btn'])) {
   $order_total_price = $_POST['order_total_price'];
@@ -42,7 +42,6 @@ include(SHARED_PATH . '/header.php');
 
 <!----- Code from PayPal's website ------>
 
-<!-- <div id="paypal-button-container"></div> -->
 <!-- Sample PayPal credentials (client-id) are included -->
 <script src="https://www.paypal.com/sdk/js?client-id=AbAiodno3Df0bwdw-owa_xToHmoNEFluEHM2e9UaYdYnrf6HCjQ08xur0KtQSc5qZFzfaOY2rkVi3hf2&currency=USD&intent=capture" data-sdk-integration-source="integrationbuilder"></script>
 
@@ -83,9 +82,14 @@ include(SHARED_PATH . '/header.php');
           const payerName = details.payer.name.given_name
           console.log('Transaction completed!')
 
+          // clear cart session
+          <?php unset($_SESSION['cart']); ?>
+
+          // update session variable
+          <?php $_SESSION['quantity'] = 0; ?>
+
           // redirect to account page after payment and display message
           window.location.href = "account.php?payment=success";
-
         }
 
         return actions.order.capture().then(captureOrderHandler)

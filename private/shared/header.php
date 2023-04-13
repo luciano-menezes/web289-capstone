@@ -1,7 +1,10 @@
 <?php
+// session_start();
+
 if (!isset($page_title)) {
   $page_title = 'My Crafty Mind';
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +51,13 @@ if (!isset($page_title)) {
             </li>
 
             <li class="nav-item">
-              <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+              <a href="cart.php">
+                <i class="fas fa-shopping-cart">
+                  <?php if (isset($_SESSION['quantity']) && $_SESSION['quantity'] != 0) { ?>
+                    <span class="cart-quantity"><?php echo $_SESSION['quantity']; ?></span>
+                  <?php } ?>
+                </i>
+              </a>
               <a href="login.php"><i class="fas fa-user"></i></a>
             </li>
 

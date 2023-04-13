@@ -40,8 +40,8 @@
 
             <div class="form-group mt-2">
               <label>Category</label>
-              <select class="form-select" required name="category">
-                <option value="ceiling hang pot racks">Ceiling Hang Pot Racks</option>
+              <select class="form-select" id="category" name="category" required>
+                <option value="ceiling hang pot racks" id="ceiling hang pot racks" for="ceiling hang pot racks">Ceiling Hang Pot Racks</option>
                 <option value="coat rack">Coat Rack</option>
                 <option value="greeting cards">Greeting Cards</option>
                 <option value="jewelry organizer">Jewelry Organizer</option>

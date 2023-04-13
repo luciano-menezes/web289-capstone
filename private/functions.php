@@ -26,16 +26,19 @@ function find_user_address_by_id($user_id)
 function calculateTotalCart()
 {
 
-  $total = 0;
+  $total_price = 0;
+  $total_quantity = 0;
   foreach ($_SESSION['cart'] as $key => $value) {
     $product = $_SESSION['cart'][$key];
 
     $product_price = $product['product_price'];
     $product_quantity = $product['product_quantity'];
-    $total = $total + ($product_price * $product_quantity);
+    $total_price = $total_price + ($product_price * $product_quantity);
+    $total_quantity = $total_quantity + $product_quantity;
   }
 
-  $_SESSION['total'] = $total;
+  $_SESSION['total'] = $total_price;
+  $_SESSION['quantity'] = $total_quantity;
 }
 
 //Calculate the total price of the order

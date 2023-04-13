@@ -1,8 +1,6 @@
-<?php require_once('../private/initialize.php'); ?>
-
 <?php
-
-session_start();
+//session_start();
+require_once('../private/initialize.php');
 
 // if this conditions are met, let user in.
 if (!empty($_SESSION['cart'])) {
@@ -12,9 +10,6 @@ if (!empty($_SESSION['cart'])) {
   header('location: index.php');
 }
 
-?>
-
-<?php
 $page_title = 'Checkout';
 include(SHARED_PATH . '/header.php');
 ?>

@@ -1,8 +1,11 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php
+//session_start();
+require_once('../private/initialize.php');
+
+?>
 
 <?php
 
-session_start();
 if (isset($_POST['add_to_cart'])) {
 
   //if user has already an added product to cart
@@ -84,12 +87,10 @@ if (isset($_POST['add_to_cart'])) {
 }
 
 ?>
-
 <?php
 $page_title = 'Shopping Cart';
 include(SHARED_PATH . '/header.php');
 ?>
-
 <!--Cart-->
 <section class="cart container my-5 py-5">
   <div class="container mt-5">
@@ -103,35 +104,39 @@ include(SHARED_PATH . '/header.php');
       <th>Subtotal</th>
     </tr>
 
-    <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
-      <tr>
-        <td>
-          <div class="product-info">
-            <img src="images/<?php echo $value['image_name']; ?>">
-            <div>
-              <p><?php echo $value['product_name']; ?></p>
-              <small><span>$</span><?php echo $value['product_price']; ?></small>
-              <br>
-              <form method="POST" action="cart.php">
-                <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
-                <input type="submit" name="remove_product" class="remove-btn" value="remove" />
-              </form>
-            </div>
-          </div>
-        </td>
-        <td>
-          <form method="post" action="cart.php">
-            <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>" />
-            <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>">
-            <input type="submit" class="edit-btn" value="edit" name="edit_product_quantity" />
-          </form>
+    <?php if (isset($_SESSION['cart'])) { ?>
 
-        </td>
-        <td>
-          <span>$</span>
-          <span class="product-price"><?php echo $value['product_quantity'] * $value['product_price']; ?></span>
-        </td>
-      </tr>
+      <?php foreach ($_SESSION['cart'] as $key => $value) { ?>
+        <tr>
+          <td>
+            <div class="product-info">
+              <img src="images/<?php echo $value['image_name']; ?>">
+              <div>
+                <p><?php echo $value['product_name']; ?></p>
+                <small><span>$</span><?php echo $value['product_price']; ?></small>
+                <br>
+                <form method="POST" action="cart.php">
+                  <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
+                  <input type="submit" name="remove_product" class="remove-btn" value="remove" />
+                </form>
+              </div>
+            </div>
+          </td>
+          <td>
+            <form method="post" action="cart.php">
+              <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>" />
+              <input type="number" name="product_quantity" value="<?php echo $value['product_quantity']; ?>">
+              <input type="submit" class="edit-btn" value="edit" name="edit_product_quantity" />
+            </form>
+
+          </td>
+          <td>
+            <span>$</span>
+            <span class="product-price"><?php echo $value['product_quantity'] * $value['product_price']; ?></span>
+          </td>
+        </tr>
+
+      <?php } ?>
 
     <?php } ?>
 
@@ -141,7 +146,9 @@ include(SHARED_PATH . '/header.php');
     <table>
       <tr>
         <td>Total</td>
-        <td>$ <?php echo $_SESSION['total']; ?></td>
+        <?php if (isset($_SESSION['cart'])) { ?>
+          <td>$ <?php echo $_SESSION['total']; ?></td>
+        <?php } ?>
       </tr>
     </table>
   </div>
