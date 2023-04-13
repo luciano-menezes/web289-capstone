@@ -1,7 +1,6 @@
 <?php
-require_once('../private/initialize.php');
-
 //session_start();
+require_once('../private/initialize.php');
 
 if (isset($_POST['order_pay_btn'])) {
   $order_total_price = $_POST['order_total_price'];

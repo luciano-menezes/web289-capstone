@@ -1,4 +1,7 @@
-<?php include('admin_header.php'); ?>
+<?php
+require_once('../initialize.php');
+include('admin_header.php');
+?>
 
 <div class="container-fluid">
   <div class="row" style="min-height: 1000px">
@@ -40,11 +43,17 @@
 
             <div class="form-group mt-2">
               <label>Category</label>
-              <select class="form-select" id="category" name="category" required>
-                <option value="ceiling hang pot racks" id="ceiling hang pot racks" for="ceiling hang pot racks">Ceiling Hang Pot Racks</option>
+              <!-- <select class="form-select" id="category" required name="category">
+                <option value="ceiling hang pot racks">Ceiling Hang Pot Racks</option>
                 <option value="coat rack">Coat Rack</option>
                 <option value="greeting cards">Greeting Cards</option>
                 <option value="jewelry organizer">Jewelry Organizer</option>
+              </select> -->
+              <select class="form-select" id="category" required name="category">
+                <option value="1">Ceiling Hang Pot Racks</option>
+                <option value="3">Coat Rack</option>
+                <option value="4">Greeting Cards</option>
+                <option value="2">Jewelry Organizer</option>
               </select>
             </div>
 

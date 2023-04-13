@@ -1,4 +1,7 @@
-<?php include('admin_header.php'); ?>
+<?php
+require_once('../initialize.php');
+include('admin_header.php');
+?>
 
 <?php
 if (!isset($_SESSION['admin_logged_in'])) {

@@ -1,5 +1,5 @@
 <?php include('admin_header.php'); ?>
-</header>
+
 
 <div class="container-fluid">
   <div class="row" style="min-height: 1000px">
