@@ -105,7 +105,6 @@ $products = $stmt2->get_result();
         <p class="text-center" style="color: red;"><?php echo $_GET['images_failed']; ?></p>
       <?php } ?>
 
-
       <p class="text-center"></p>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -116,7 +115,7 @@ $products = $stmt2->get_result();
               <th scope="col">Product Name</th>
               <th scope="col">Product Category</th>
               <th scope="col">Product Price</th>
-
+              <th scope="col">Edit Images</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
@@ -131,6 +130,7 @@ $products = $stmt2->get_result();
                 <td><?php echo $product['category_name']; ?></td>
                 <td><?php echo "$" . $product['product_price']; ?></td>
 
+                <td><a class="btn btn-warning" href="<?php echo "edit_images.php?product_id=" . $product['product_id'] . "&product_name=" . $product['product_name']; ?>">Edit Images</a></td>
                 <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
                 <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>
               </tr>
