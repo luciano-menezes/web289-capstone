@@ -12,9 +12,9 @@ include('../private/get_featured_products.php');
 <!--Home - Top-->
 <header id="banner" role="banner">
   <div class="container">
-    <h1><span>Welcome To</span> My Crafty Mind</h1>
+    <h1 class="display-4"><span>Welcome To</span> My Crafty Mind</h1>
     <!-- <h2>Best Prices This Season</h2> -->
-    <h3>Making spaces beautiful and functional</h3>
+    <h4 class="intro-container text-center px-5 text-md fw-light">We specialize in handmade wood products that add beauty and functionality to your home. From decorative accents to practical storage solutions, each of our items is lovingly crafted to bring a unique touch to your living space. Browse our selection and discover the perfect piece to enhance your home's style and organization.</h4>
     <!-- <button>Shop Now</button> -->
   </div>
 </header>
@@ -23,9 +23,9 @@ include('../private/get_featured_products.php');
 <main role="main" id="main-content" tabindex="-1">
   <section id="featured" class="my-5 py-5">
     <div class="container text-center mt-5 py-5">
-      <h3>Featured Products</h3>
+      <h3>Products</h3>
       <hr class="mx-auto">
-      <p>Check it out our featured products</p>
+      <p>Check it out some of our products</p>
     </div>
 
 

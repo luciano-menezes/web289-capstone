@@ -5,6 +5,22 @@ if (!isset($page_title)) {
   $page_title = 'My Crafty Mind';
 }
 
+// get the current page's filename
+$current_page = basename($_SERVER['PHP_SELF']);
+
+// set the "active" class on the corresponding nav-item
+if ($current_page == 'index.php') {
+  $nav_item1_class = 'active';
+} elseif ($current_page == 'about.php') {
+  $nav_item2_class = 'active';
+} elseif ($current_page == 'contact_us.php') {
+  $nav_item3_class = 'active';
+} elseif ($current_page == 'cart.php') {
+  $nav_item4_class = 'active';
+} elseif ($current_page == 'login.php') {
+  $nav_item5_class = 'active';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,36 +37,34 @@ if (!isset($page_title)) {
 
 </head>
 
+
 <body>
   <div id="wrapper">
     <a href="#main-content" id="bypass">Skip to main content</a>
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top" role="navigation">
       <div class="container">
-        <a href="index.php"><img class="logo" src="images/logo.png" alt="" width="" height=""></a>
+        <a href="index.php"><img class="logo" src="images/logo.png" alt="The business logo" width="500" height="500"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo $nav_item1_class ?? ''  ?>">
               <a class="nav-link" href="index.php">Home</a>
             </li>
 
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Shop</a>
-            </li> -->
-
-            <li class="nav-item">
+            <li class="nav-item <?php echo $nav_item2_class ?? ''  ?>">
               <a class="nav-link" href="about.php">About</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo $nav_item3_class ?? ''  ?>">
               <a class="nav-link" href="contact_us.php">Contact Us</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo $nav_item4_class ?? ''  ?>">
               <a href="cart.php">
                 <i class="fas fa-shopping-cart">
                   <?php if (isset($_SESSION['quantity']) && $_SESSION['quantity'] != 0) { ?>
@@ -58,9 +72,11 @@ if (!isset($page_title)) {
                   <?php } ?>
                 </i>
               </a>
-              <a href="login.php"><i class="fas fa-user"></i></a>
             </li>
 
+            <li class="nav-item <?php echo $nav_item5_class ?? ''  ?>">
+              <a href="login.php"><i class="fas fa-user"></i></a>
+            </li>
           </ul>
         </div>
       </div>
