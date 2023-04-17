@@ -28,7 +28,10 @@ if (isset($_POST['login_btn'])) {
       $_SESSION['email'] = $email;
       $_SESSION['logged_in'] = true;
 
-      header('location: account.php?login_success=Logged in successfully!');
+      // Set session variable with username
+      $_SESSION['username'] = $first_name;
+
+      header('location: index.php?login_success=Logged in successfully!');
     } else {
       header('location: login.php?error=Could not verify your account!');
     }

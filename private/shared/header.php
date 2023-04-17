@@ -17,7 +17,7 @@ if ($current_page == 'index.php') {
   $nav_item3_class = 'active';
 } elseif ($current_page == 'cart.php') {
   $nav_item4_class = 'active';
-} elseif ($current_page == 'login.php') {
+} elseif ($current_page == 'login.php' || $current_page == 'navbar_logout.php' || $current_page == 'account.php') {
   $nav_item5_class = 'active';
 }
 
@@ -66,7 +66,7 @@ if ($current_page == 'index.php') {
 
             <li class="nav-item <?php echo $nav_item4_class ?? ''  ?>">
               <a href="cart.php">
-                <i class="fas fa-shopping-cart">
+                <i class="fas fa-shopping-cart">Cart
                   <?php if (isset($_SESSION['quantity']) && $_SESSION['quantity'] != 0) { ?>
                     <span class="cart-quantity"><?php echo $_SESSION['quantity']; ?></span>
                   <?php } ?>
@@ -74,9 +74,36 @@ if ($current_page == 'index.php') {
               </a>
             </li>
 
-            <li class="nav-item <?php echo $nav_item5_class ?? ''  ?>">
-              <a href="login.php"><i class="fas fa-user"></i></a>
+
+
+            <li class="nav-item dropdown <?php echo $nav_item5_class ?? ''  ?>">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php
+                if (isset($_SESSION['username'])) {
+                  echo 'Hello, ' . $_SESSION['username'];
+                } else {
+                  echo 'Hello, sign in';
+                  echo '<i class="fas fa-sign-in-alt"></i>'; // Add login button icon
+                }
+                ?>
+              </a>
+              <ul class="dropdown-menu">
+                <?php if (isset($_SESSION['username'])) { // If user is logged in, show logout link 
+                ?>
+                  <li><a class="dropdown-item" href="navbar_logout.php">Logout</a></li>
+                  <li><a class="dropdown-item" href="account.php">Account</a></li>
+                <?php } else { // If user is not logged in, show login link 
+                ?>
+                  <li><a class="dropdown-item" href="login.php">Login</a></li>
+                  <li><a class="dropdown-item" href="account.php">Account</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="signup.php">New customer? Sign Up here</a></li>
+                <?php } ?>
+              </ul>
             </li>
+
           </ul>
         </div>
       </div>

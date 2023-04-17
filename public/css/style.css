@@ -132,7 +132,11 @@ color: #3e2e23;
 }
 
 .nav-item .fa-shopping-cart {
-  margin-right: 10px; 
+  margin-right: 5px; 
+}
+
+.nav-item .fa-user {
+  margin-left: 5px; 
 }
 
 .navbar .fas {
