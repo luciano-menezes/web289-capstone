@@ -87,10 +87,6 @@ button {
   transition: 0.5s ease;
 }
 
-/* button:hover {
-  background-color: coral;
-} */
-
 .logo {
   border-radius: 10px;
   height: 100px;
@@ -370,11 +366,6 @@ th:last-child {
   color: #fff;
 }
 
-.checkout-btn:hover {
-  background-color: #000;
-  color: #fff;
-}
-
 .checkout-container {
   display: flex;
   justify-content: flex-end;
@@ -452,6 +443,29 @@ th:last-child {
   color: #3e2e23;
 }
 
+/***Contact Us Form***/
+.message-form {
+  margin: 5px auto;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+.message-form input {
+  margin: 5px auto;
+ padding: 5px;
+  width: 80%;
+}
+
+#message {
+  height: 200px;
+  width: 80%;
+}
+
+#message-btn{
+  background-color: #3e2e23;
+  color: #fff;
+}
 /********* Account Page **************/
 
 #account-form {

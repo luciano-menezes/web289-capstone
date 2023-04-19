@@ -115,10 +115,10 @@ if (isset($_GET['product_id'])) {
               <input type="text" class="form-control" id="product-color" name="color" placeholder="Color" required />
             </div> -->
 
-            <div class="form-group mt-2">
+            <!-- <div class="form-group mt-2">
               <label>Special Offer/Sale</label>
               <input type="number" class="form-control" id="product-offer" value="<?php echo $product['discount'] ?>" name="offer" placeholder="Sale %" required />
-            </div>
+            </div> -->
 
             <div class="form-group mt-3">
               <input type="submit" class="btn btn-primary" name="edit_btn" value="Edit" />

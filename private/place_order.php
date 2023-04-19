@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('initialize.php');
 
 //if user is not logged in

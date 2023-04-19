@@ -82,8 +82,8 @@ if ($current_page == 'index.php') {
                 if (isset($_SESSION['username'])) {
                   echo 'Hello, ' . $_SESSION['username'];
                 } else {
-                  echo 'Hello, sign in';
-                  echo '<i class="fas fa-sign-in-alt"></i>'; // Add login button icon
+                  echo 'Hello, log in';
+                  // echo '<i class="fas fa-sign-in-alt"></i>'; // Add login button icon
                 }
                 ?>
               </a>
@@ -94,7 +94,7 @@ if ($current_page == 'index.php') {
                   <li><a class="dropdown-item" href="account.php">Account</a></li>
                 <?php } else { // If user is not logged in, show login link 
                 ?>
-                  <li><a class="dropdown-item" href="login.php">Login</a></li>
+                  <li><a class="dropdown-item" href="login.php">Log in</a></li>
                   <li><a class="dropdown-item" href="account.php">Account</a></li>
                   <li>
                     <hr class="dropdown-divider">

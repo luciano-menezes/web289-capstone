@@ -1,7 +1,6 @@
 <?php
 //session_start();
 require_once('../private/initialize.php');
-
 ?>
 
 <?php
@@ -155,7 +154,8 @@ include(SHARED_PATH . '/header.php');
 
   <div class="checkout-container">
     <form method="post" action="checkout.php">
-      <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout">
+      <input type="submit" class="btn checkout-btn" name="checkout" value="Proceed to checkout">
+
     </form>
   </div>
 </section>
