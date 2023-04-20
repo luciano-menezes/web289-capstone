@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require_once('../private/initialize.php');
 
 if (isset($_SESSION['logged_in'])) {
@@ -30,6 +29,9 @@ if (isset($_POST['login_btn'])) {
 
       // Set session variable with username
       $_SESSION['username'] = $first_name;
+
+      // Add this line to set the session variable with the user ID
+      $_SESSION['user_id'] = $user_id;
 
       header('location: index.php?login_success=Logged in successfully!');
     } else {

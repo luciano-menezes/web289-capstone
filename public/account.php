@@ -1,5 +1,7 @@
 <?php
-//session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once('../private/initialize.php');
 
 
@@ -38,9 +40,6 @@ if (isset($_POST['change_password'])) {
   } else {
     $stmt = $connection->prepare("UPDATE `user` SET user_password=? WHERE email=?");
     $stmt->bind_param('ss', md5($password), $email);
-    // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    // $stmt = $connection->prepare("UPDATE `user` SET user_password=? WHERE email=?");
-    // $stmt->bind_param('ss', $hashed_password, $email);
 
     if ($stmt->execute()) {
       header('location: account.php?message=Password has been updated successfully!');
@@ -52,12 +51,14 @@ if (isset($_POST['change_password'])) {
 
 //get order
 if (isset($_SESSION['logged_in'])) {
-  $user_id = $_SESSION['user_id'];
+  if (isset($array['user_id'])) {
+    // access the user_id key
+  } else {
+    // handle the case when the user_id key is not set
+  }
   $stmt = $connection->prepare("SELECT * FROM `order` WHERE user_id=?");
-
   $stmt->bind_param('i', $user_id);
   $stmt->execute();
-
   $orders = $stmt->get_result();
 }
 

@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require_once('../private/initialize.php');
 ?>
 
@@ -13,17 +12,29 @@ if (isset($_SESSION['logged_in'])) {
 
 if (isset($_POST['signup'])) {
 
-  $first_name = $_POST['first-name'];
-  $last_name = $_POST['last-name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confirm_password = $_POST['confirmPassword'];
+  // $first_name = $_POST['first-name'];
+  // $last_name = $_POST['last-name'];
+  // $email = $_POST['email'];
+  // $password = $_POST['password'];
+  // $confirm_password = $_POST['confirmPassword'];
+  // $user_level = 'u';
+  // $street_1 = $_POST['street1'];
+  // $street_2 = $_POST['street2'];
+  // $city = $_POST['city'];
+  // $state = $_POST['state'];
+  // $zip_code = $_POST['zip-code'];
+
+  $first_name = htmlspecialchars($_POST['first-name'], ENT_QUOTES, 'UTF-8');
+  $last_name = htmlspecialchars($_POST['last-name'], ENT_QUOTES, 'UTF-8');
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+  $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+  $confirm_password = htmlspecialchars($_POST['confirmPassword'], ENT_QUOTES, 'UTF-8');
   $user_level = 'u';
-  $street_1 = $_POST['street1'];
-  $street_2 = $_POST['street2'];
-  $city = $_POST['city'];
-  $state = $_POST['state'];
-  $zip_code = $_POST['zip-code'];
+  $street_1 = htmlspecialchars($_POST['street1'], ENT_QUOTES, 'UTF-8');
+  $street_2 = htmlspecialchars($_POST['street2'], ENT_QUOTES, 'UTF-8');
+  $city = htmlspecialchars($_POST['city'], ENT_QUOTES, 'UTF-8');
+  $state = htmlspecialchars($_POST['state'], ENT_QUOTES, 'UTF-8');
+  $zip_code = htmlspecialchars($_POST['zip-code'], ENT_QUOTES, 'UTF-8');
 
   //if passwords don't match
   if ($password != $confirm_password) {
@@ -71,6 +82,10 @@ if (isset($_POST['signup'])) {
         $_SESSION['first_name'] = $first_name;
         $_SESSION['last_name'] = $last_name;
         $_SESSION['logged_in'] = true;
+
+        // Set session variable with username
+        $_SESSION['username'] = $first_name;
+
         header('location: account.php?signup_success=You signed up successfully!');
 
         //account could not be created

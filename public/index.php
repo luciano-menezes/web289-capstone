@@ -1,6 +1,4 @@
-<!-- establish a connection to the database and define constants for paths -->
 <?php
-//session_start();
 require_once('../private/initialize.php');
 
 $page_title = 'Home';
@@ -27,7 +25,6 @@ include('../private/get_featured_products.php');
       <hr class="mx-auto">
       <p>Check it out some of our products</p>
     </div>
-
 
     <!-- the loop fetches the featured products from the database and displays them in a product section...
 ...the product section contains an image of the product, the product name, the price, and a "Shop Now" button that links to the single product page.-->

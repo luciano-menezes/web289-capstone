@@ -1,6 +1,4 @@
 <?php
-// session_start();
-
 if (!isset($page_title)) {
   $page_title = 'My Crafty Mind';
 }
