@@ -4,7 +4,7 @@ if (!isset($page_title)) {
 }
 
 // get the current page's filename
-$current_page = basename($_SERVER['PHP_SELF']);
+$current_page = h(basename($_SERVER['PHP_SELF']));
 
 // set the "active" class on the corresponding nav-item
 if ($current_page == 'index.php') {
@@ -26,7 +26,7 @@ if ($current_page == 'index.php') {
 
 <head>
   <meta charset="utf-8">
-  <title>My Crafty Mind - <?php echo ($page_title) ?></title>
+  <title>My Crafty Mind - <?php echo h($page_title) ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
@@ -50,23 +50,23 @@ if ($current_page == 'index.php') {
         <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <li class="nav-item <?php echo $nav_item1_class ?? ''  ?>">
+            <li class="nav-item <?php echo h($nav_item1_class ?? '')  ?>">
               <a class="nav-link" href="index.php">Home</a>
             </li>
 
-            <li class="nav-item <?php echo $nav_item2_class ?? ''  ?>">
+            <li class="nav-item <?php echo h($nav_item2_class ?? '')  ?>">
               <a class="nav-link" href="about.php">About</a>
             </li>
 
-            <li class="nav-item <?php echo $nav_item3_class ?? ''  ?>">
+            <li class="nav-item <?php echo h($nav_item3_class ?? '')  ?>">
               <a class="nav-link" href="contact_us.php">Contact Us</a>
             </li>
 
-            <li class="nav-item <?php echo $nav_item4_class ?? ''  ?>">
+            <li class="nav-item <?php echo h($nav_item4_class ?? '')  ?>">
               <a href="cart.php">
                 <i class="fas fa-shopping-cart">Cart
                   <?php if (isset($_SESSION['quantity']) && $_SESSION['quantity'] != 0) { ?>
-                    <span class="cart-quantity"><?php echo $_SESSION['quantity']; ?></span>
+                    <span class="cart-quantity"><?php echo h($_SESSION['quantity']); ?></span>
                   <?php } ?>
                 </i>
               </a>
@@ -74,11 +74,11 @@ if ($current_page == 'index.php') {
 
 
 
-            <li class="nav-item dropdown <?php echo $nav_item5_class ?? ''  ?>">
+            <li class="nav-item dropdown <?php echo h($nav_item5_class ?? '')  ?>">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <?php
                 if (isset($_SESSION['username'])) {
-                  echo 'Hello, ' . $_SESSION['username'];
+                  echo 'Hello, ' . h($_SESSION['username']);
                 } else {
                   echo 'Hello, log in';
                   // echo '<i class="fas fa-sign-in-alt"></i>'; // Add login button icon

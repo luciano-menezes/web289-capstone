@@ -10,11 +10,10 @@ $success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Get the form data
-  $name = trim($_POST['name']);
-  $mailFrom = trim($_POST['email']);
-  $subject = trim($_POST['subject']);
-  $message = trim($_POST['message']);
-
+  $name = h(trim($_POST['name']));
+  $mailFrom = h(trim($_POST['email']));
+  $subject = h(trim($_POST['subject']));
+  $message = h(trim($_POST['message']));
   // Validate the form data
   if (empty($name)) {
     $errors[] = 'Name is required';
@@ -71,13 +70,13 @@ include(SHARED_PATH . '/header.php');
 
       <form class="message-form" method="post" action="message_form.php">
         <label for="name">Name</label><br>
-        <input type="text" id="name" name="name" placeholder="Full name" value="<?php echo htmlspecialchars($name); ?>"><br>
+        <input type="text" id="name" name="name" placeholder="Full name" value="<?php echo h($name); ?>"><br>
         <label for="email">Email</label><br>
-        <input type="email" id="email" name="email" placeholder="Your e-mail" value="<?php echo htmlspecialchars($mailFrom); ?>"><br>
+        <input type="email" id="email" name="email" placeholder="Your e-mail" value="<?php echo h($mailFrom); ?>"><br>
         <label for="subject">Subject</label><br>
-        <input type="text" id="subject" name="subject" placeholder="Subject" value="<?php echo htmlspecialchars($subject); ?>"><br>
+        <input type="text" id="subject" name="subject" placeholder="Subject" value="<?php echo h($subject); ?>"><br>
         <label for="message">Message</label><br>
-        <textarea id="message" name="message" placeholder="Message" maxlength="500"><?php echo htmlspecialchars($message); ?></textarea><br>
+        <textarea id="message" name="message" placeholder="Message" maxlength="500"><?php echo h($message); ?></textarea><br>
         <input type="submit" id="message-btn" class="btn" name="submit" value="Submit">
       </form>
     <?php } ?>

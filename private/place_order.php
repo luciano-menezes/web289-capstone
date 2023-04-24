@@ -12,9 +12,9 @@ if (!isset($_SESSION['logged_in'])) {
   if (isset($_POST['place_order'])) {
 
     //1. get user info and store it in the database
-    $first_name = $_POST['first-name'];
-    $last_name = $_POST['last-name'];
-    $email = $_POST['email'];
+    $first_name = h($_POST['first-name']);
+    $last_name = h($_POST['last-name']);
+    $email = h($_POST['email']);
     $total_cost = $_SESSION['total'];
     $user_id = $_SESSION['user_id'];
     $order_date = date('Y-m-d H:i:s');

@@ -1,10 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-require_once('../private/initialize.php');
-
-
+require_once('../private/initialize.php'); {
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
 
 if (!isset($_SESSION['logged_in'])) {
   header('location: login.php');
@@ -24,9 +21,9 @@ if (isset($_GET['logout'])) {
 
 if (isset($_POST['change_password'])) {
 
-  $password = $_POST['password'];
-  $confirm_password = $_POST['confirm-password'];
-  $email = $_SESSION['email'];
+  $password = h($_POST['password']);
+  $confirm_password = h($_POST['confirm-password']);
+  $email = h($_SESSION['email']);
 
   //if passwords don't match
   if ($password != $confirm_password) {
@@ -51,11 +48,7 @@ if (isset($_POST['change_password'])) {
 
 //get order
 if (isset($_SESSION['logged_in'])) {
-  if (isset($array['user_id'])) {
-    // access the user_id key
-  } else {
-    // handle the case when the user_id key is not set
-  }
+  $user_id = h($_SESSION['user_id']); // retrieve the user id from the session
   $stmt = $connection->prepare("SELECT * FROM `order` WHERE user_id=?");
   $stmt->bind_param('i', $user_id);
   $stmt->execute();
@@ -84,19 +77,19 @@ include(SHARED_PATH . '/header.php');
     <?php } ?>
     <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
       <p class="text-center" style="color:green"><?php if (isset($_GET['signup_success'])) {
-                                                    echo $_GET['signup_success'];
+                                                    echo h($_GET['signup_success']);
                                                   } ?></p>
       <p class="text-center" style="color:green"><?php if (isset($_GET['login_success'])) {
-                                                    echo $_GET['login_success'];
+                                                    echo h($_GET['login_success']);
                                                   } ?></p>
       <h3 class="font-weight-bold">Account Info</h3>
       <hr class="mx-auto">
       <div class="account-info">
         <p>Name: <span> <?php if (isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
-                          echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name'];
+                          echo h($_SESSION['first_name']) . ' ' . h($_SESSION['last_name']);
                         } ?></span></p>
         <p>Email: <span><?php if (isset($_SESSION['email'])) {
-                          echo $_SESSION['email'];
+                          echo ($_SESSION['email']);
                         } ?></span></p>
         <p><a href="#orders" id="orders-btn">Your Orders</a></p>
         <p><a href="account.php?logout=1" id="logout-btn">Logout</a></p>
@@ -106,10 +99,10 @@ include(SHARED_PATH . '/header.php');
     <div class="col-lg-6 col-md-12 col-sm-12">
       <form id="account-form" method="post" action="account.php">
         <p class="text-center" style="color:red"><?php if (isset($_GET['error'])) {
-                                                    echo $_GET['error'];
+                                                    echo h($_GET['error']);
                                                   } ?></p>
         <p class="text-center" style="color:green"><?php if (isset($_GET['message'])) {
-                                                      echo $_GET['message'];
+                                                      echo h($_GET['message']);
                                                     } ?></p>
         <h3>Change Password</h3>
         <hr class="mx-auto">
@@ -150,19 +143,19 @@ include(SHARED_PATH . '/header.php');
         <td>
           <div class="product-info">
             <div>
-              <p class="mt-3"><?php echo $row['order_id']; ?></p>
+              <p class="mt-3"><?php echo h($row['order_id']); ?></p>
             </div>
           </div>
         <td>
-          <span><?php echo $row['total_cost']; ?></span>
+          <span><?php echo h($row['total_cost']); ?></span>
         </td>
         <td>
-          <span><?php echo $row['order_date']; ?></span>
+          <span><?php echo h($row['order_date']); ?></span>
         </td>
 
         <td>
           <form method="POST" action="order_details.php">
-            <input type="hidden" value="<?php echo $row['order_id']; ?>" name="order_id">
+            <input type="hidden" value="<?php echo h($row['order_id']); ?>" name="order_id">
             <input class="btn order-details-btn" name="order_details_btn" type="submit" value="details">
           </form>
         </td>

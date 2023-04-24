@@ -1,9 +1,8 @@
 <?php
-//session_start();
 require_once('../private/initialize.php');
 
 if (isset($_POST['order_pay_btn'])) {
-  $order_total_price = $_POST['order_total_price'];
+  $order_total_price = h($_POST['order_total_price']);
 }
 ?>
 
@@ -23,7 +22,7 @@ include(SHARED_PATH . '/header.php');
 
     <?php if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
       <?php $amount = strval($_SESSION['total']); ?>
-      <p>Total payment: $<?php echo $_SESSION['total']; ?></p>
+      <p>Total payment: $<?php echo h($_SESSION['total']); ?></p>
       <!-- <input class="btn btn-primary" type="submit" value="Pay Now"> -->
       <!-- Set up a container element for the button -->
       <div id="paypal-button-container"></div>

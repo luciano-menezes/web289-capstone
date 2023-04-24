@@ -55,3 +55,9 @@ function calculateTotalOrderPrice($order_details)
   }
   return $total;
 }
+
+// Escape special characters to prevent XSS attacks
+function h($string)
+{
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}

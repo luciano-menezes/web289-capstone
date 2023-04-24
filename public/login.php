@@ -8,7 +8,7 @@ if (isset($_SESSION['logged_in'])) {
 
 if (isset($_POST['login_btn'])) {
 
-  $email = $_POST['email'];
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   $password = md5($_POST['password']);
 
   $stmt = $connection->prepare("SELECT user_id, first_name, last_name, email, user_password, user_level FROM `user` WHERE email = ? AND user_password = ? AND (user_level = 'a' OR user_level = 'u') LIMIT 1");
@@ -22,16 +22,13 @@ if (isset($_POST['login_btn'])) {
       $stmt->fetch();
 
       $_SESSION['user_id'] = $user_id;
-      $_SESSION['first_name'] = $first_name;
-      $_SESSION['last_name'] = $last_name;
-      $_SESSION['email'] = $email;
+      $_SESSION['first_name'] = h($first_name);
+      $_SESSION['last_name'] = h($last_name);
+      $_SESSION['email'] = h($email);
       $_SESSION['logged_in'] = true;
 
       // Set session variable with username
       $_SESSION['username'] = $first_name;
-
-      // Add this line to set the session variable with the user ID
-      $_SESSION['user_id'] = $user_id;
 
       header('location: index.php?login_success=Logged in successfully!');
     } else {
@@ -59,7 +56,7 @@ include(SHARED_PATH . '/header.php');
   <div class="mx-auto container">
     <form id="login-form" method="post" action="login.php">
       <p style="color:red" class="text-center"><?php if (isset($_GET['error'])) {
-                                                  echo $_GET['error'];
+                                                  echo h($_GET['error']);
                                                 } ?></p>
       <div class="form-group">
         <label for="email">Email</label>
