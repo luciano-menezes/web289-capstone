@@ -9,14 +9,10 @@ if (!isset($_SESSION['admin_logged_in'])) {
   exit();
 }
 
-?>
-
-<?php
-
 //1. determine page no
 if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
   //if user has already entered page then page number is the one that they selected
-  $page_no = $_GET['page_no'];
+  $page_no = h($_GET['page_no']);
 } else {
   //if user just entered the page then default page is 1
   $page_no = 1;
@@ -74,35 +70,35 @@ $products = $stmt2->get_result();
 
       <h2>Products</h2>
       <?php if (isset($_GET['edit_success_message'])) { ?>
-        <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
+        <p class="text-center" style="color: green;"><?php echo h($_GET['edit_success_message']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['edit_failure_message'])) { ?>
-        <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message'] ?></p>
+        <p class="text-center" style="color: red;"><?php echo h($_GET['edit_failure_message']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['deleted_successfully'])) { ?>
-        <p class="text-center" style="color: green;"><?php echo $_GET['deleted_successfully'] ?></p>
+        <p class="text-center" style="color: green;"><?php echo h($_GET['deleted_successfully']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['deleted_failure'])) { ?>
-        <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
+        <p class="text-center" style="color: red;"><?php echo h($_GET['deleted_failure']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['product_created'])) { ?>
-        <p class="text-center" style="color: green;"><?php echo $_GET['product_created']; ?></p>
+        <p class="text-center" style="color: green;"><?php echo h($_GET['product_created']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['product_failed'])) { ?>
-        <p class="text-center" style="color: red;"><?php echo $_GET['product_failed']; ?></p>
+        <p class="text-center" style="color: red;"><?php echo h($_GET['product_failed']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['images_updated'])) { ?>
-        <p class="text-center" style="color: green;"><?php echo $_GET['images_updated']; ?></p>
+        <p class="text-center" style="color: green;"><?php echo h($_GET['images_updated']); ?></p>
       <?php } ?>
 
       <?php if (isset($_GET['images_failed'])) { ?>
-        <p class="text-center" style="color: red;"><?php echo $_GET['images_failed']; ?></p>
+        <p class="text-center" style="color: red;"><?php echo h($_GET['images_failed']); ?></p>
       <?php } ?>
 
       <p class="text-center"></p>
@@ -124,15 +120,15 @@ $products = $stmt2->get_result();
 
             <?php foreach ($products as $product) { ?>
               <tr>
-                <td><?php echo $product['product_id']; ?></td>
-                <td><img src="<?php echo "../../public/images/" . $product['image_name']; ?>" style="width: 70px; height: 70px"></td>
-                <td><?php echo $product['product_name']; ?></td>
-                <td><?php echo $product['category_name']; ?></td>
-                <td><?php echo "$" . $product['product_price']; ?></td>
+                <td><?php echo h($product['product_id']); ?></td>
+                <td><img src="<?php echo h("../../public/images/" . $product['image_name']); ?>" style="width: 70px; height: 70px"></td>
+                <td><?php echo h($product['product_name']); ?></td>
+                <td><?php echo h($product['category_name']); ?></td>
+                <td><?php echo h("$" . $product['product_price']); ?></td>
 
-                <td><a class="btn btn-warning" href="<?php echo "edit_images.php?product_id=" . $product['product_id'] . "&product_name=" . $product['product_name']; ?>">Edit Images</a></td>
-                <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Edit</a></td>
-                <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Delete</a></td>
+                <td><a class="btn btn-warning" href="<?php echo h("edit_images.php?product_id=" . $product['product_id'] . "&product_name=" . $product['product_name']); ?>">Edit Images</a></td>
+                <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo h($product['product_id']); ?>">Edit</a></td>
+                <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo h($product['product_id']); ?>">Delete</a></td>
               </tr>
             <?php } ?>
 
@@ -150,19 +146,16 @@ $products = $stmt2->get_result();
                                             echo '#';
                                           } else {
                                             echo "?page_no=" . ($page_no - 1);
-                                          } ?>">Previous</a>
+                                          } ?>"><?php echo h('Previous'); ?></a>
             </li>
 
-
-            <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?page_no=1"><?php echo h('1'); ?></a></li>
+            <li class="page-item"><a class="page-link" href="?page_no=2"><?php echo h('2'); ?></a></li>
 
             <?php if ($page_no >= 3) { ?>
-              <li class="page-item"><a class="page-link" href="#">...</a></li>
-              <li class="page-item"><a class="page-link" href="<?php echo "?page_no=" . $page_no; ?>"><?php echo $page_no; ?></a></li>
+              <li class="page-item"><a class="page-link" href="#"><?php echo h('...'); ?></a></li>
+              <li class="page-item"><a class="page-link" href="<?php echo "?page_no=" . h($page_no); ?>"><?php echo h($page_no); ?></a></li>
             <?php } ?>
-
-
 
             <li class="page-item <?php if ($page_no >=  $total_no_of_pages) {
                                     echo 'disabled';
@@ -171,7 +164,7 @@ $products = $stmt2->get_result();
                                             echo '#';
                                           } else {
                                             echo "?page_no=" . ($page_no + 1);
-                                          } ?>">Next</a>
+                                          } ?>"><?php echo h('Next'); ?></a>
             </li>
           </ul>
         </nav>

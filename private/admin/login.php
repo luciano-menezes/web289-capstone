@@ -4,7 +4,6 @@ include('admin_header.php');
 ?>
 
 <?php
-require_once('../initialize.php');
 
 if (isset($_SESSION['logged_in'])) {
   header('location: index.php');
@@ -13,7 +12,7 @@ if (isset($_SESSION['logged_in'])) {
 
 if (isset($_POST['login_btn'])) {
 
-  $email = $_POST['email'];
+  $email = h($_POST['email']);
   $password = md5($_POST['password']);
 
   $stmt = $connection->prepare("SELECT user_id, first_name, last_name, email, user_password, user_level FROM `user` WHERE email = ? AND user_password = ? AND user_level = 'a' LIMIT 1");
@@ -74,7 +73,7 @@ if (isset($_POST['login_btn'])) {
         <div class="mx-auto container">
           <form id="login-form" enctype="multipart/form-data" method="POST" action="login.php">
             <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                      echo $_GET['error'];
+                                      echo h($_GET['error']);
                                     } ?></p>
             <div class="form-group mt-2">
               <label>Email</label>

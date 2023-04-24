@@ -25,10 +25,10 @@ if (!isset($_SESSION['admin_logged_in'])) {
       </div>
 
       <div class="container">
-        <p>Id: <?php echo $_SESSION['user_id']; ?></p>
-        <p>Name: <?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></p>
-        <!-- <p>Last Name: <?php echo $_SESSION['last_name']; ?></p> -->
-        <p>Email: <?php echo $_SESSION['email']; ?></p>
+        <p>Id: <?php echo h($_SESSION['user_id']); ?></p>
+        <p>Name: <?php echo h($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?></p>
+        <!-- <p>Last Name: <?php echo h($_SESSION['last_name']); ?></p> -->
+        <p>Email: <?php echo h($_SESSION['email']); ?></p>
       </div>
 
   </div>

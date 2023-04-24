@@ -3,8 +3,8 @@ require_once('../initialize.php');
 
 if (isset($_POST['create_product'])) {
 
-  $product_name = $_POST['product_name'];
-  $product_id = $_POST['product_id'];
+  $product_name = h($_POST['product_name']);
+  $product_id = h($_POST['product_id']);
 
   // check if an image file was uploaded
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {

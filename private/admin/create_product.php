@@ -3,11 +3,10 @@ require_once('../initialize.php');
 
 if (isset($_POST['create_product'])) {
 
-  $product_name = $_POST['title'];
-  $product_description = $_POST['description'];
-  $product_price = $_POST['price'];
-  $category_id = $_POST['category'];
-
+  $product_name = h($_POST['title']);
+  $product_description = h($_POST['description']);
+  $product_price = h($_POST['price']);
+  $category_id = h($_POST['category']);
 
   //this is the file itself (image)
   $image = $_FILES['image']['tmp_name'];
@@ -49,21 +48,6 @@ VALUES (?, ?)");
     echo $stmt->error;
     exit;
   }
-
-
-  // Insert the category name for the new product in the category table
-  //   $stmt = $connection->prepare("INSERT INTO `category` (product_id, category_name)
-  // VALUES (?, ?)");
-  //   if (!$stmt) {
-  //     // display the error message
-  //     echo $connection->error;
-  //     exit;
-  //   }
-  //   $stmt->bind_param('is', $product_id, $category_name);
-  //   if (!$stmt->execute()) {
-  //     echo $stmt->error;
-  //     exit;
-  //   }
 
   if ($stmt->affected_rows > 0) {
     header('location: products.php?product_created=Product has been created successfully');

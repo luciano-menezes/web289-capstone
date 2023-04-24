@@ -24,7 +24,7 @@ include('admin_header.php');
         <div class="mx-auto container">
           <form id="create-form" enctype="multipart/form-data" method="POST" action="create_product.php">
             <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                      echo $_GET['error'];
+                                      echo h($_GET['error']);
                                     } ?></p>
             <div class="form-group mt-2">
               <label>Title</label>
@@ -43,12 +43,6 @@ include('admin_header.php');
 
             <div class="form-group mt-2">
               <label>Category</label>
-              <!-- <select class="form-select" id="category" required name="category">
-                <option value="ceiling hang pot racks">Ceiling Hang Pot Racks</option>
-                <option value="coat rack">Coat Rack</option>
-                <option value="greeting cards">Greeting Cards</option>
-                <option value="jewelry organizer">Jewelry Organizer</option>
-              </select> -->
               <select class="form-select" id="category" required name="category">
                 <option value="1">Ceiling Hang Pot Racks</option>
                 <option value="3">Coat Rack</option>

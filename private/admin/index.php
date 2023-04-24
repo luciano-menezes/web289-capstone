@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 //1. determine page no
 if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
   //if user has already entered page then page number is the one that they selected
-  $page_no = $_GET['page_no'];
+  $page_no = h($_GET['page_no']);
 } else {
   //if user just entered the page then default page is 1
   $page_no = 1;
@@ -80,10 +80,10 @@ $orders = $stmt2->get_result();
 
             <?php foreach ($orders as $order) { ?>
               <tr>
-                <td><?php echo $order['order_id']; ?></td>
-                <td><?php echo $order['user_id']; ?></td>
-                <td><?php echo $order['order_date']; ?></td>
-                <td><?php echo $order['total_cost']; ?></td>
+                <td><?php echo h($order['order_id']); ?></td>
+                <td><?php echo h($order['user_id']); ?></td>
+                <td><?php echo h($order['order_date']); ?></td>
+                <td><?php echo h($order['total_cost']); ?></td>
 
                 <!-- <td><a class="btn btn-primary" href="edit_order.php?order_id=<?php echo $order['order_id']; ?>">Edit</a></td> -->
                 <!-- <td><a class="btn btn-danger">Delete</a></td> -->
@@ -104,16 +104,16 @@ $orders = $stmt2->get_result();
                                             echo '#';
                                           } else {
                                             echo "?page_no=" . ($page_no - 1);
-                                          } ?>">Previous</a>
+                                          } ?>"><?php echo h('Previous'); ?></a>
             </li>
 
 
-            <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?page_no=1"><?php echo h('1'); ?></a></li>
+            <li class="page-item"><a class="page-link" href="?page_no=2"><?php echo h('2'); ?></a></li>
 
             <?php if ($page_no >= 3) { ?>
-              <li class="page-item"><a class="page-link" href="#">...</a></li>
-              <li class="page-item"><a class="page-link" href="<?php echo "?page_no=" . $page_no; ?>"><?php echo $page_no; ?></a></li>
+              <li class="page-item"><a class="page-link" href="#"><?php echo h('...'); ?></a></li>
+              <li class="page-item"><a class="page-link" href="<?php echo "?page_no=" . $page_no; ?>"><?php echo h($page_no); ?></a></li>
             <?php } ?>
 
 
@@ -125,7 +125,7 @@ $orders = $stmt2->get_result();
                                             echo '#';
                                           } else {
                                             echo "?page_no=" . ($page_no + 1);
-                                          } ?>">Next</a>
+                                          } ?>"><?php echo h('Next'); ?></a>
             </li>
           </ul>
         </nav>
@@ -141,5 +141,6 @@ $orders = $stmt2->get_result();
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
 <script src="dashboard.js"></script>
 </body>
+
 
 </html>

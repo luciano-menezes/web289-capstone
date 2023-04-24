@@ -2,8 +2,8 @@
 
 <?php
 if (isset($_GET['product_id'])) {
-  $product_id = $_GET['product_id'];
-  $product_name = $_GET['product_name'];
+  $product_id = h($_GET['product_id']);
+  $product_name = h($_GET['product_name']);
 } else {
   header('location: products.php');
 }
@@ -31,7 +31,7 @@ if (isset($_GET['product_id'])) {
         <div class="mx-auto container">
           <form id="edit-image-form" enctype="multipart/form-data" method="POST" action="update_images.php">
             <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                      echo $_GET['error'];
+                                      echo h($_GET['error']);
                                     } ?></p>
 
             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />

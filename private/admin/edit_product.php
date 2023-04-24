@@ -44,6 +44,7 @@ if (isset($_GET['product_id'])) {
   JOIN order_item oi ON p.product_id = oi.product_id
   SET p.product_name=?, p.product_description=?, p.product_price=?, c.category_name=?, oi.discount=?
   WHERE p.product_id=?");
+
   if ($stmt === false) {
     die($connection->error);
   }

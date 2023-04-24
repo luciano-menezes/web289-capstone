@@ -23,7 +23,7 @@
         <div class="mx-auto container">
           <form id="edit-order-form" enctype="multipart/form-data">
             <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                      echo $_GET['error'];
+                                      echo h($_GET['error']);
                                     } ?></p>
             <div class="form-group my-3">
               <label>OrderId</label>
@@ -36,7 +36,7 @@
 
             </div>
 
-            <div class="form-group my-3">
+            <!-- <div class="form-group my-3">
               <label>Order Status</label>
               <select class="form-select" required name="category">
                 <option value="not paid">Not Paid</option>
@@ -44,7 +44,7 @@
                 <option value="shipped">Shipped</option>
                 <option value="delivered">Delivered</option>
               </select>
-            </div>
+            </div> -->
 
             <div class="form-group my-3">
               <label>OrderDate</label>
