@@ -40,7 +40,7 @@ $total_no_of_pages = ceil($total_records / $total_records_per_page);
 
 //4. get all products
 
-$stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, c.category_name, i.image_name 
+$stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, p.product_description, c.category_name, i.image_name 
 FROM `product` p 
 LEFT JOIN `category` c ON p.category_id = c.category_id
 LEFT JOIN `image` i ON p.product_id = i.product_id 
@@ -106,13 +106,14 @@ $products = $stmt2->get_result();
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">Product ID</th>
-              <th scope="col">Product Image</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Product Category</th>
-              <th scope="col">Product Price</th>
-              <th scope="col">Edit Images</th>
-              <th scope="col">Edit</th>
+              <th scope="col">ID</th>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Images</th>
+              <th scope="col">Content</th>
               <th scope="col">Delete</th>
             </tr>
           </thead>
@@ -124,9 +125,10 @@ $products = $stmt2->get_result();
                 <td><img src="<?php echo h("../../public/images/" . $product['image_name']); ?>" style="width: 70px; height: 70px"></td>
                 <td><?php echo h($product['product_name']); ?></td>
                 <td><?php echo h($product['category_name']); ?></td>
+                <td><?php echo h($product['product_description']); ?></td>
                 <td><?php echo h("$" . $product['product_price']); ?></td>
 
-                <td><a class="btn btn-warning" href="<?php echo h("edit_images.php?product_id=" . $product['product_id'] . "&product_name=" . $product['product_name']); ?>">Edit Images</a></td>
+                <td><a class="btn btn-warning" href="<?php echo h("edit_images.php?product_id=" . $product['product_id'] . "&product_name=" . $product['product_name']); ?>">Edit</a></td>
                 <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo h($product['product_id']); ?>">Edit</a></td>
                 <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo h($product['product_id']); ?>">Delete</a></td>
               </tr>

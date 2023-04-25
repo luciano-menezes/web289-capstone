@@ -5,24 +5,10 @@ include('admin_header.php');
 
 <?php
 
-//If I decide not to use discount, I use this code.
-
-// if (isset($_GET['product_id'])) {
-//   $product_id = $_GET['product_id'];
-//   $stmt = $connection->prepare("SELECT * FROM `product` WHERE product_id=?");
-//   $stmt->bind_param('i', $product_id);
-//   $stmt->execute();
-//   $products = $stmt->get_result();
-// } else {
-//   header('Location: product.php');
-//   exit;
-// }
-
 if (isset($_GET['product_id'])) {
-  $product_id = $_GET['product_id'];
-  $stmt = $connection->prepare("SELECT p.product_id, p.product_name, p.product_description, p.product_price, c.category_name, SUM(oi.discount) AS discount
+  $product_id = h($_GET['product_id']);
+  $stmt = $connection->prepare("SELECT p.product_id, p.product_name, p.product_description, p.product_price, c.category_name
   FROM product p
-  LEFT JOIN order_item oi ON p.product_id = oi.product_id
   LEFT JOIN category c ON c.category_id = p.category_id
   WHERE p.product_id = ?
   GROUP BY p.product_id");
@@ -32,23 +18,21 @@ if (isset($_GET['product_id'])) {
   $products = $stmt->get_result();
 } else if (isset($_POST['edit_btn'])) {
 
-  $product_id = $_POST['product_id'];
-  $title = $_POST['title'];
-  $description = $_POST['description'];
-  $price = $_POST['price'];
-  $category = $_POST['category'];
-  $offer = $_POST['offer'];
+  $product_id = h($_POST['product_id']);
+  $title = h($_POST['title']);
+  $description = h($_POST['description']);
+  $price = h($_POST['price']);
+  $category = h($_POST['category']);
 
   $stmt = $connection->prepare("UPDATE product p
   JOIN category c ON p.category_id = c.category_id
-  JOIN order_item oi ON p.product_id = oi.product_id
-  SET p.product_name=?, p.product_description=?, p.product_price=?, c.category_name=?, oi.discount=?
+  SET p.product_name=?, p.product_description=?, p.product_price=?, c.category_name=?
   WHERE p.product_id=?");
 
   if ($stmt === false) {
     die($connection->error);
   }
-  $stmt->bind_param('sssssi', $title, $description, $price, $category, $offer, $product_id);
+  $stmt->bind_param('ssssi', $title, $description, $price, $category, $product_id);
   if ($stmt->execute()) {
     header('Location: products.php?edit_success_message=Product has been updated successfully');
   } else {
@@ -83,23 +67,23 @@ if (isset($_GET['product_id'])) {
         <div class="mx-auto container">
           <form id="edit-form" method="POST" action="edit_product.php">
             <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                      echo $_GET['error'];
+                                      echo h($_GET['error']);
                                     } ?></p>
             <div class="form-group mt-2">
 
 
               <?php foreach ($products as $product) { ?>
-                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                <input type="hidden" name="product_id" value="<?php echo h($product['product_id']); ?>">
                 <label>Title</label>
-                <input type="text" class="form-control" id="product-name" value="<?php echo $product['product_name'] ?>" name="title" placeholder="Title" required />
+                <input type="text" class="form-control" id="product-name" value="<?php echo h($product['product_name']); ?>" name="title" placeholder="Title" required />
             </div>
             <div class="form-group mt-2">
               <label>Description</label>
-              <input type="text" class="form-control" id="product-desc" value="<?php echo $product['product_description'] ?>" name="description" placeholder="Description" required />
+              <input type="text" class="form-control" id="product-desc" value="<?php echo h($product['product_description']); ?>" name="description" placeholder="Description" required />
             </div>
             <div class="form-group mt-2">
               <label>Price</label>
-              <input type="text" class="form-control" id="product-price" value="<?php echo $product['product_price'] ?>" name="price" placeholder="Price" required />
+              <input type="text" class="form-control" id="product-price" value="<?php echo h($product['product_price']); ?>" name="price" placeholder="Price" required />
             </div>
             <div class="form-group mt-2">
               <label>Category</label>
@@ -110,16 +94,6 @@ if (isset($_GET['product_id'])) {
                 <option value="jewelry-organizer">Jewelry Organizer</option>
               </select>
             </div>
-
-            <!-- <div class="form-group mt-2">
-              <label>Color</label>
-              <input type="text" class="form-control" id="product-color" name="color" placeholder="Color" required />
-            </div> -->
-
-            <!-- <div class="form-group mt-2">
-              <label>Special Offer/Sale</label>
-              <input type="number" class="form-control" id="product-offer" value="<?php echo $product['discount'] ?>" name="offer" placeholder="Sale %" required />
-            </div> -->
 
             <div class="form-group mt-3">
               <input type="submit" class="btn btn-primary" name="edit_btn" value="Edit" />
