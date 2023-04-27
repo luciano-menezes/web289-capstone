@@ -12,32 +12,32 @@ include(SHARED_PATH . '/header.php');
 ?>
 
 <!--Payment-->
+<main role="main" id="main-content" tabindex="-1">
+  <section class="my-5 py-5">
+    <div class="container text-center mt-3 pt-5">
+      <h1 class="form-weight-bold">Payment</h1>
+      <hr class="mx-auto">
+    </div>
+    <div class="mx-auto container text-center">
 
-<section class="my-5 py-5">
-  <div class="container text-center mt-3 pt-5">
-    <h2 class="form-weight-bold">Payment</h2>
-    <hr class="mx-auto">
-  </div>
-  <div class="mx-auto container text-center">
+      <?php if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
+        <?php $amount = strval($_SESSION['total']); ?>
+        <p>Total payment: $<?php echo h($_SESSION['total']); ?></p>
+        <!-- <input class="btn btn-primary" type="submit" value="Pay Now"> -->
+        <!-- Set up a container element for the button -->
+        <div id="paypal-button-container"></div>
+      <?php  } else { ?>
 
-    <?php if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
-      <?php $amount = strval($_SESSION['total']); ?>
-      <p>Total payment: $<?php echo h($_SESSION['total']); ?></p>
-      <!-- <input class="btn btn-primary" type="submit" value="Pay Now"> -->
+        <p>Your cart is empty!</p>
+
+      <?php } ?>
+
       <!-- Set up a container element for the button -->
       <div id="paypal-button-container"></div>
-    <?php  } else { ?>
 
-      <p>Your cart is empty!</p>
-
-    <?php } ?>
-
-    <!-- Set up a container element for the button -->
-    <div id="paypal-button-container"></div>
-
-  </div>
-</section>
-
+    </div>
+  </section>
+</main>
 <!----- Code from PayPal's website ------>
 
 <!-- Sample PayPal credentials (client-id) are included -->

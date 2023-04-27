@@ -48,39 +48,41 @@ include(SHARED_PATH . '/header.php');
 ?>
 
 <!--Login-->
-<section class="my-5 py-5">
-  <div class="container text-center mt-3 pt-5">
-    <h2 class="form-weight-bold">Login</h2>
-    <hr class="mx-auto">
-  </div>
-  <div class="mx-auto container">
-    <form id="login-form" method="post" action="login.php">
-      <p style="color:red" class="text-center"><?php if (isset($_GET['error'])) {
-                                                  echo h($_GET['error']);
-                                                } ?></p>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="login-email" name="email" placeholder="email" required>
-      </div>
+<main role="main" id="main-content" tabindex="-1">
+  <section class="my-5 py-5">
+    <div class="container text-center mt-3 pt-5">
+      <h1 class="form-weight-bold">Login</h1>
+      <hr class="mx-auto">
+    </div>
+    <div class="mx-auto container">
+      <form id="login-form" method="post" action="login.php">
+        <p style="color:red" class="text-center"><?php if (isset($_GET['error'])) {
+                                                    echo h($_GET['error']);
+                                                  } ?></p>
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" class="form-control" id="login-email" name="email" placeholder="email" required>
+        </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="login-password" name="password" placeholder="password" required>
-      </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" class="form-control" id="login-password" name="password" placeholder="password" required>
+        </div>
 
-      <div class="form-group">
-        <input type="submit" class="btn" id="login-btn" name="login_btn" value="Login">
-      </div>
+        <div class="form-group">
+          <input type="submit" class="btn" id="login-btn" name="login_btn" value="Login">
+        </div>
 
-      <div class="form-group">
-        <a id="register-url" href="signup.php" class="btn">Don't have an account? Sign Up here!</a>
-      </div>
+        <div class="form-group">
+          <a id="register-url" href="signup.php" class="btn">Don't have an account? Sign Up here!</a>
+        </div>
 
-    </form>
-  </div>
-</section>
+      </form>
+    </div>
+  </section>
+  <main role="main" id="main-content" tabindex="-1">
 
-<!--Footer-->
-<?php
-include(SHARED_PATH . '/footer.php');
-?>
+    <!--Footer-->
+    <?php
+    include(SHARED_PATH . '/footer.php');
+    ?>

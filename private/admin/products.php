@@ -40,7 +40,7 @@ $total_no_of_pages = ceil($total_records / $total_records_per_page);
 
 //4. get all products
 
-$stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, p.product_description, c.category_name, i.image_name 
+$stmt2 = $connection->prepare("SELECT p.product_id, p.product_price, p.product_name, p.product_description, c.category_name, i.image_name, i.alt_text 
 FROM `product` p 
 LEFT JOIN `category` c ON p.category_id = c.category_id
 LEFT JOIN `image` i ON p.product_id = i.product_id 
@@ -55,7 +55,7 @@ $products = $stmt2->get_result();
 
     <?php include('sidemenu.php'); ?>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" role="main" id="main-content" tabindex="-1">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -122,7 +122,7 @@ $products = $stmt2->get_result();
             <?php foreach ($products as $product) { ?>
               <tr>
                 <td><?php echo h($product['product_id']); ?></td>
-                <td><img src="<?php echo h("../../public/images/" . $product['image_name']); ?>" style="width: 70px; height: 70px"></td>
+                <td><img src="<?php echo h("../../public/images/" . $product['image_name']); ?>" style="width: 70px; height: 70px" alt="<?php echo h($product['alt_text']); ?>"></td>
                 <td><?php echo h($product['product_name']); ?></td>
                 <td><?php echo h($product['category_name']); ?></td>
                 <td><?php echo h($product['product_description']); ?></td>
@@ -170,19 +170,15 @@ $products = $stmt2->get_result();
             </li>
           </ul>
         </nav>
-
-
       </div>
     </main>
   </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-<script src="dashboard.js"></script>
+<!-- <script src="dashboard.js"></script> -->
 </body>
 
 </html>

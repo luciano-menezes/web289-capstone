@@ -36,37 +36,10 @@ body{
 }
 
 #bypass:focus {
+  position: absolute; 
   left: 10px;
-  top: 10px;
-}
-
-h1{
-  font-size: 2.8rem;
-  font-weight: 700;
-}
-
-h2{
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-h3{
-  font-size: 1.5rem;
-  font-weight: 800;
-}
-
-h4{
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-h5{
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-h6{
-  color: #d8d8d8;
+  top: 20px;
+  z-index: 2; 
 }
 
 img {
@@ -93,7 +66,7 @@ button {
   width: 100px;
 }
 
-/********Navbar*******/
+/******** Navbar *******/
 
 .nav-buttons {
   margin-left: 50%;
@@ -106,6 +79,8 @@ button {
   padding-bottom: 2rem;
   padding-top: 2rem;
   top: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -154,7 +129,7 @@ color: #3e2e23;
   border-bottom: 2px solid #000; /* or any other color */
 }
 
-/*******Banner*******/
+/******* Banner *******/
 
 #banner{
   align-items: flex-start;
@@ -172,7 +147,12 @@ color: #3e2e23;
 
 header span {
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 400;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
 }
 
 .intro-container {
@@ -180,7 +160,7 @@ header span {
   padding: 10px;
 }
 
-/****** Featured Products ********/
+/****** Products - Home Page ********/
 
 .product {
   cursor: pointer;
@@ -196,6 +176,10 @@ header span {
   color: #3e2e23;
 }
 
+.product .p-name {
+  font-size: 1rem;
+}
+
 .product .buy-btn {
   background-color: #3e2e23;
 }
@@ -207,16 +191,48 @@ hr {
   width: 50%;
 }
 
+/******* About **********/
+
+h1 {
+  font-size: 1.8rem;
+}
+
 /******* Footer *********/
 
 footer {
   background-color: #222222;
 }
 
-footer h5 {
+footer h1 {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
+}
+
+footer h2 {
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+footer h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+footer li {
+  color: #fff;
+  font-size: .8rem;
+  list-style-type: none;
+}
+
+footer i:hover {
+  color: #fff;
+}
+
+footer p {
+  font-size: .8rem;
 }
 
 /*********** Single Product Page ************/
@@ -322,9 +338,10 @@ footer .copyright img {
 }
 
 .cart .edit-btn {
-  background-color: #fff;
+  background-color: #3e2e23;
   border: none;
-  color: #000;
+  border-radius: 5px;
+  color: #fff;
   font-size: 15px;
   text-decoration: none;
 }
@@ -345,9 +362,6 @@ footer .copyright img {
 }
 
 .cart-quantity {
-  /* background-color: blue;
-  border-radius: 50%;
-  color: #fff; */
   font-size: 1rem;
   margin: -2px;
   padding: 2px 5px;
@@ -362,6 +376,11 @@ th:last-child {
 }
 
 .checkout-btn {
+  background-color: #3e2e23;
+  color: #fff;
+}
+
+.checkout-btn:hover {
   background-color: #3e2e23;
   color: #fff;
 }
@@ -454,11 +473,6 @@ th:last-child {
 .message-form input {
   margin: 5px auto;
  padding: 5px;
-  width: 80%;
-}
-
-#message {
-  height: 200px;
   width: 80%;
 }
 

@@ -15,23 +15,24 @@ include(SHARED_PATH . '/header.php');
 ?>
 
 <!--Checkout-->
-<section class="my-5 py-5">
-  <div class="container text-center mt-3 pt-5">
-    <h2 class="form-weight-bold">Checkout</h2>
-    <hr class="mx-auto">
-  </div>
+<main role="main" id="main-content" tabindex="-1">
+  <section class="my-5 py-5">
+    <div class="container text-center mt-3 pt-5">
+      <h1 class="form-weight-bold">Checkout</h1>
+      <hr class="mx-auto">
+    </div>
 
-  <div class="mx-auto container">
-    <form id="checkout-form" method="POST" action="../private/place_order.php">
-      <div class="form-group checkout-btn-container">
-        <p><strong>Total Amount: $ <?php echo h($_SESSION['total']); ?></strong></p>
-        <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Proceed to payment">
-      </div>
-    </form>
-    <form id="checkout-form" method="POST" action="../private/place_order.php">
-  </div>
-
-</section>
+    <div class="mx-auto container">
+      <form id="checkout-form" method="POST" action="../private/place_order.php">
+        <div class="form-group checkout-btn-container">
+          <p><strong>Total Amount: $ <?php echo h($_SESSION['total']); ?></strong></p>
+          <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Proceed to payment">
+        </div>
+      </form>
+      <form id="checkout-form" method="POST" action="../private/place_order.php">
+    </div>
+  </section>
+</main>
 
 <!--Footer-->
 <?php

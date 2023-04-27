@@ -91,130 +91,131 @@ include(SHARED_PATH . '/header.php');
 ?>
 
 <!--Sign Up-->
-<section class="my-5 py-5"></section>
-<div class="container text-center mt-3 pt-5">
-  <h2 class="form-weight-bold">Sign Up</h2>
-  <hr class="mx-auto">
-</div>
-<div class="mx-auto container">
-  <form id="signup-form" method="POST" action="signup.php">
-    <p style="color: red;"><?php if (isset($_GET['error'])) {
-                              echo h($_GET['error']);
-                            } ?></p>
-    <div class="form-group">
-      <div>
-        <label for="first-name">First Name</label>
-        <input type="text" class="form-control" id="signup-first-name" name="first-name" placeholder="First Name" required>
+<main role="main" id="main-content" tabindex="-1">
+  <section class="my-5 py-5"></section>
+  <div class="container text-center mt-3 pt-5">
+    <h2 class="form-weight-bold">Sign Up</h2>
+    <hr class="mx-auto">
+  </div>
+  <div class="mx-auto container">
+    <form id="signup-form" method="POST" action="signup.php">
+      <p style="color: red;"><?php if (isset($_GET['error'])) {
+                                echo h($_GET['error']);
+                              } ?></p>
+      <div class="form-group">
+        <div>
+          <label for="signup-first-name">First Name</label>
+          <input type="text" class="form-control" id="signup-first-name" name="first-name" placeholder="First Name" required>
+        </div>
+
+        <div>
+          <label for="signup-last-name">Last Name</label>
+          <input type="text" class="form-control" id="signup-last-name" name="last-name" placeholder="Last Name" required>
+        </div>
+
+        <label for="signup-email">Email</label>
+        <input type="email" class="form-control" id="signup-email" name="email" placeholder="Email" required>
       </div>
 
-      <div>
-        <label for="last-name">Last Name</label>
-        <input type="text" class="form-control" id="signup-last-name" name="last-name" placeholder="Last Name" required>
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <input type="password" class="form-control" id="signup-password" name="password" placeholder="Password" required>
       </div>
 
-      <label for="email">Email</label>
-      <input type="email" class="form-control" id="signup-email" name="email" placeholder="Email" required>
-    </div>
+      <div class="form-group">
+        <label for="signup-confirm-password">Confirm Password</label>
+        <input type="password" class="form-control" id="signup-confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
+      </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="signup-password" name="password" placeholder="Password" required>
-    </div>
+      <div class="form-group">
+        <label for="checkout-street1">Street1</label>
+        <input type="text" class="form-control" id="checkout-street1" name="street1" placeholder="Street1" required>
+      </div>
 
-    <div class="form-group">
-      <label for="confirm-password">Confirm Password</label>
-      <input type="password" class="form-control" id="signup-confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
-    </div>
+      <div class="form-group">
+        <label for="checkout-street2">Street2</label>
+        <input type="text" class="form-control" id="checkout-street2" name="street2" placeholder="Street2">
+      </div>
 
-    <div class="form-group">
-      <label for="street1">Street1</label>
-      <input type="text" class="form-control" id="checkout-street1" name="street1" placeholder="Street1" required>
-    </div>
+      <div class="form-group">
+        <label for="checkout-city">City</label>
+        <input type="text" class="form-control" id="checkout-city" name="city" placeholder="City" required>
+      </div>
 
-    <div class="form-group">
-      <label for="street2">Street2</label>
-      <input type="text" class="form-control" id="checkout-street2" name="street2" placeholder="Street2">
-    </div>
+      <div class="form-group">
+        <label for="checkout-state">State</label>
+        <select type="text" class="form-control" id="checkout-state" name="state" placeholder="State" required>
+          <option value="">Select State</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <label for="city">City</label>
-      <input type="text" class="form-control" id="checkout-city" name="city" placeholder="City" required>
-    </div>
+      <div class="form-group">
+        <label for="checkout-zip">Zip Code</label>
+        <input type="text" class="form-control" id="checkout-zip" name="zip-code" placeholder="Zip Code" required>
+      </div>
 
-    <div class="form-group">
-      <label for="state">State</label>
-      <select type="text" class="form-control" id="checkout-state" name="state" placeholder="State" required>
-        <option value="">Select State</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-        <option value="CO">Colorado</option>
-        <option value="CT">Connecticut</option>
-        <option value="DE">Delaware</option>
-        <option value="FL">Florida</option>
-        <option value="GA">Georgia</option>
-        <option value="HI">Hawaii</option>
-        <option value="ID">Idaho</option>
-        <option value="IL">Illinois</option>
-        <option value="IN">Indiana</option>
-        <option value="IA">Iowa</option>
-        <option value="KS">Kansas</option>
-        <option value="KY">Kentucky</option>
-        <option value="LA">Louisiana</option>
-        <option value="ME">Maine</option>
-        <option value="MD">Maryland</option>
-        <option value="MA">Massachusetts</option>
-        <option value="MI">Michigan</option>
-        <option value="MN">Minnesota</option>
-        <option value="MS">Mississippi</option>
-        <option value="MO">Missouri</option>
-        <option value="MT">Montana</option>
-        <option value="NE">Nebraska</option>
-        <option value="NV">Nevada</option>
-        <option value="NH">New Hampshire</option>
-        <option value="NJ">New Jersey</option>
-        <option value="NM">New Mexico</option>
-        <option value="NY">New York</option>
-        <option value="NC">North Carolina</option>
-        <option value="ND">North Dakota</option>
-        <option value="OH">Ohio</option>
-        <option value="OK">Oklahoma</option>
-        <option value="OR">Oregon</option>
-        <option value="PA">Pennsylvania</option>
-        <option value="RI">Rhode Island</option>
-        <option value="SC">South Carolina</option>
-        <option value="SD">South Dakota</option>
-        <option value="TN">Tennessee</option>
-        <option value="TX">Texas</option>
-        <option value="UT">Utah</option>
-        <option value="VT">Vermont</option>
-        <option value="VA">Virginia</option>
-        <option value="WA">Washington</option>
-        <option value="WV">West Virginia</option>
-        <option value="WI">Wisconsin</option>
-        <option value="WY">Wyoming</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <input type="submit" class="btn" id="signup-btn" name="signup" value="Signup">
+      </div>
 
-    <div class="form-group">
-      <label for="Zip-Code">Zip Code</label>
-      <input type="text" class="form-control" id="checkout-zip" name="zip-code" placeholder="Zip Code" required>
-    </div>
+      <div class="form-group">
+        <a id="login-url" href="login.php" class="btn">Already have an account? Login!</a>
+      </div>
 
-    <div class="form-group">
-      <input type="submit" class="btn" id="signup-btn" name="signup" value="Signup">
-    </div>
-
-    <div class="form-group">
-      <a id="login-url" href="login.php" class="btn">Already have an account? Login!</a>
-    </div>
-
-  </form>
-</div>
-</section>
-
+    </form>
+  </div>
+  </section>
+</main>
 <!--Footer-->
 <?php
 include(SHARED_PATH . '/footer.php');
