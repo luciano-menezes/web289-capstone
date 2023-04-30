@@ -32,9 +32,9 @@
     <div class="footer-one col-lg-3 col-md-6 col-sm-12">
       <h3 class="pb-2">Instagram</h3>
       <div class="row">
-        <img src="images/coat-rack1.jpeg" class="img-fluid w-25 h-100 m-2" alt="A coat Rack image." width="25" height="100">
-        <img src="images/pot-rack1.jpeg" class="img-fluid w-25 h-100 m-2" alt="An image of one of the products, which is a Hanging Pot Rack." width="25" height="100">
-        <img src="images/card1.jpeg" class="img-fluid w-25 h-100 m-2" alt="An image of one of the products, which is a Greeting Card." width="25" height="100">
+        <img src="images/coat-rack1.jpeg" class="img-fluid w-25 h-100 m-2" alt="A coat Rack image." width="680" height="540">
+        <img src="images/pot-rack1.jpeg" class="img-fluid w-25 h-100 m-2" alt="An image of one of the products, which is a Hanging Pot Rack." width="680" height="540">
+        <img src="images/card1.jpeg" class="img-fluid w-25 h-100 m-2" alt="An image of one of the products, which is a Greeting Card." width="680" height="540">
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
   <div class="copyright mt-5">
     <div class="row container mx-auto">
       <div class="col-lg-5 col-md-5 col-sm-12 mb-4">
-        <img src="images/paypal.png" class="img-fluid w-25 h-75 m-2" alt="An image the PayPal logo, which is the payment method available on this website." width="25" height="75">
+        <img src="images/paypal.png" class="img-fluid w-25 h-75 m-2" alt="An image the PayPal logo, which is the payment method available on this website." width="640" height="320">
       </div>
       <div class="col-lg-3 col-md-5 col-sm-12 mb-4 text-nowrap mb-2">
         <p>eCommerce @ 2025 All Rights Reserved</p>
