@@ -1,4 +1,8 @@
-<?php include('admin_header.php'); ?>
+<?php require_once('../initialize.php');
+
+$page_title = 'Admin Account';
+include(SHARED_PATH . '/admin_header.php');
+?>
 
 <?php
 

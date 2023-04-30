@@ -1,5 +1,8 @@
 <?php
 require_once('../initialize.php');
+if (!isset($page_title)) {
+  $page_title = 'My Crafty Mind Admin Area';
+}
 ?>
 
 <!doctype html>
@@ -11,7 +14,7 @@ require_once('../initialize.php');
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.88.1">
-  <title>Admin Area</title>
+  <title>My Crafty Mind - <?php echo h($page_title) ?></title>
   <link href="favicon.ico" rel="icon">
   <link rel="stylesheet" href="../../public/css/style.css">
 

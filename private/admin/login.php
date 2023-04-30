@@ -1,6 +1,7 @@
 <?php
 require_once('../initialize.php');
-include('admin_header.php');
+$page_title = 'Admin Login';
+include(SHARED_PATH . '/admin_header.php');
 ?>
 
 <?php

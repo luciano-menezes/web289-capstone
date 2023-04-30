@@ -1,6 +1,8 @@
 <?php
 require_once('../initialize.php');
-include('admin_header.php');
+
+$page_title = 'Admin Products';
+include(SHARED_PATH . '/admin_header.php');
 ?>
 
 <?php

@@ -1,4 +1,9 @@
-<?php include('admin_header.php'); ?>
+<?php require_once('../initialize.php');
+
+$page_title = 'Admin Help';
+include(SHARED_PATH . '/admin_header.php');
+
+?>
 
 <?php
 if (!isset($_SESSION['admin_logged_in'])) {
