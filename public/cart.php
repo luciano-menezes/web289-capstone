@@ -131,7 +131,7 @@ include(SHARED_PATH . '/header.php');
                   <br>
                   <form method="POST" action="cart.php">
                     <input type="hidden" name="product_id" value="<?php echo h($value['product_id']); ?>">
-                    <input type="submit" name="remove_product" class="remove-btn" value="remove" />
+                    <input type="submit" name="remove_product" class="remove-btn" value="Delete" />
                   </form>
                 </div>
               </div>

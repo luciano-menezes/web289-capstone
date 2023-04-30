@@ -129,40 +129,42 @@ include(SHARED_PATH . '/header.php');
     <hr class="mx-auto">
   </div>
 
-  <table class="mt-5 pt-5">
-    <tr>
-      <th>Order ID</th>
-      <th>Order Cost</th>
-      <th>Order Date</th>
-      <th>Order Detail</th>
-    </tr>
-
-    <?php while ($row = $orders->fetch_assoc()) { ?>
-
+  <div class="table-container">
+    <table class="mt-5 pt-5">
       <tr>
-        <td>
-          <div class="product-info">
-            <div>
-              <p class="mt-3"><?php echo h($row['order_id']); ?></p>
-            </div>
-          </div>
-        <td>
-          <span><?php echo h($row['total_cost']); ?></span>
-        </td>
-        <td>
-          <span><?php echo h($row['order_date']); ?></span>
-        </td>
-
-        <td>
-          <form method="POST" action="order_details.php">
-            <input type="hidden" value="<?php echo h($row['order_id']); ?>" name="order_id">
-            <input class="btn order-details-btn" name="order_details_btn" type="submit" value="details">
-          </form>
-        </td>
+        <th>Order ID</th>
+        <th>Order Cost</th>
+        <th>Order Date</th>
+        <th>Order Detail</th>
       </tr>
 
-    <?php } ?>
-  </table>
+      <?php while ($row = $orders->fetch_assoc()) { ?>
+
+        <tr>
+          <td>
+            <div class="product-info">
+              <div>
+                <p class="mt-3"><?php echo h($row['order_id']); ?></p>
+              </div>
+            </div>
+          <td>
+            <span><?php echo h($row['total_cost']); ?></span>
+          </td>
+          <td>
+            <span><?php echo h($row['order_date']); ?></span>
+          </td>
+
+          <td>
+            <form method="POST" action="order_details.php">
+              <input type="hidden" value="<?php echo h($row['order_id']); ?>" name="order_id">
+              <input class="btn order-details-btn" name="order_details_btn" type="submit" value="details">
+            </form>
+          </td>
+        </tr>
+
+      <?php } ?>
+    </table>
+  </div>
 
 </section>
 

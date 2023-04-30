@@ -76,7 +76,7 @@ include(SHARED_PATH . '/header.php');
           <label for="subject">Subject</label><br>
           <input type="text" id="subject" name="subject" placeholder="Subject" value="<?php echo h($subject); ?>"><br>
           <label for="message">Message</label><br>
-          <textarea id="message" name="message" placeholder="Message" maxlength="500"><?php echo h($message); ?></textarea><br>
+          <textarea id="message" name="message" placeholder="Message" maxlength="500" rows="6" cols="50"><?php echo h($message); ?></textarea><br>
           <input type="submit" id="message-btn" class="btn" name="submit" value="Submit">
         </form>
       <?php } ?>

@@ -61,31 +61,34 @@ if (isset($_POST['login_btn'])) {
       </div>
 
       <!-- <h2>Login</h2> -->
-      <div class="table-responsive">
-        <div class="mx-auto container">
-          <form id="login-form" enctype="multipart/form-data" method="POST" action="login.php">
-            <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                      echo h($_GET['error']);
-                                    } ?></p>
-            <div class="form-group mt-2">
-              <label for="product-name">Email</label>
-              <input type="email" class="form-control" id="product-name" name="email" placeholder="Email" required />
-            </div>
-            <div class="form-group mt-2">
-              <label for="product-desc">Password</label>
-              <input type="password" class="form-control" id="product-desc" name="password" placeholder="Password" required />
-            </div>
+      <main role="main" id="main-content" tabindex="-1">
 
-            <div class="form-group mt-3">
-              <input type="submit" class="btn btn-primary" name="login_btn" value="Login" />
-            </div>
+        <div class="table-responsive">
+          <div class="mx-auto container">
+            <form id="login-form" enctype="multipart/form-data" method="POST" action="login.php">
+              <p style="color: red;"><?php if (isset($_GET['error'])) {
+                                        echo h($_GET['error']);
+                                      } ?></p>
+              <div class="form-group mt-2">
+                <label for="product-name">Email</label>
+                <input type="email" class="form-control" id="product-name" name="email" placeholder="Email" required />
+              </div>
+              <div class="form-group mt-2">
+                <label for="product-desc">Password</label>
+                <input type="password" class="form-control" id="product-desc" name="password" placeholder="Password" required />
+              </div>
 
-          </form>
+              <div class="form-group mt-3">
+                <input type="submit" class="btn btn-primary" name="login_btn" value="Login" />
+              </div>
+
+            </form>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
   </div>
 </div>
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

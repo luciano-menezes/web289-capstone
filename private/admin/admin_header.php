@@ -51,13 +51,15 @@ require_once('../initialize.php');
 <body>
   <a href="#main-content" id="bypass">Skip to main content</a>
 
-  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">My Crafty Mind</a>
+  <!-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-3 shadow"> -->
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-3 shadow" style="position: relative; z-index: 1;">
+
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-none d-md-block" href="index.php">My Crafty Mind</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="navbar-nav">
+    <div class="navbar-nav ms-auto">
       <div class="nav-item text-nowrap">
         <?php if (isset($_SESSION['admin_logged_in'])) { ?>
           <a class="nav-link px-3" href="logout.php?logout=1">Sign out</a>

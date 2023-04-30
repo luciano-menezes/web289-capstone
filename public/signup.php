@@ -92,7 +92,7 @@ include(SHARED_PATH . '/header.php');
 
 <!--Sign Up-->
 <main role="main" id="main-content" tabindex="-1">
-  <section class="my-5 py-5"></section>
+  <section class="my-3 py-3"></section>
   <div class="container text-center mt-3 pt-5">
     <h2 class="form-weight-bold">Sign Up</h2>
     <hr class="mx-auto">

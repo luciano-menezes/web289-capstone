@@ -3,9 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2023 at 04:53 PM
+-- Generation Time: Apr 29, 2023 at 12:30 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.19
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,10 +40,10 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(1, 'Ceiling Hang Pot Racks'),
-(3, 'Coat Rack'),
+(3, 'coat-rack'),
 (4, 'Greeting Cards'),
-(2, 'Jewelry Organizer');
+(2, 'Jewelry Organizer'),
+(1, 'pot-rack');
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,7 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 CREATE TABLE `image` (
   `image_id` int(11) NOT NULL,
   `image_name` varchar(255) DEFAULT NULL,
+  `alt_text` varchar(255) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -60,11 +62,11 @@ CREATE TABLE `image` (
 -- Dumping data for table `image`
 --
 
-INSERT INTO `image` (`image_id`, `image_name`, `product_id`) VALUES
-(17, 'pot-rack1.jpeg', 1),
-(18, 'jewerly-organizer1.jpeg', 2),
-(19, 'coat-rack1.jpeg', 3),
-(20, 'card1.jpeg', 4);
+INSERT INTO `image` (`image_id`, `image_name`, `alt_text`, `product_id`) VALUES
+(17, 'pot-rack1.jpeg', 'An image of one of the products, which is a Hanging Pot Rack.', 1),
+(18, 'jewerly-organizer1.jpeg', ' An image of one of the products, which is a jewelry-organizer.', 2),
+(19, 'coat-rack1.jpeg', 'A Coat Rack image.', 3),
+(20, 'card1.jpeg', 'An image of one of the products, which is a Greeting Card.', 4);
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,7 @@ CREATE TABLE `order_item` (
   `order_id` int(11) NOT NULL,
   `item_price` decimal(6,2) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `discount` decimal(6,2) DEFAULT NULL,
+  `discount` decimal(6,2) DEFAULT 0.00,
   `product_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -113,10 +115,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `category_id`, `product_name`, `product_description`, `product_price`) VALUES
-(1, 1, 'Stained - Provincial Ceiling Hang Pot Rack', 'Wood type: White pine.\r\nColor stained- Provincial.\r\n\r\nThis pot rack is made with REAL pressed flowers! Black-eyed Susan flowers are featured on both sides of the pot rack.\r\n\r\nCan hold up to 8 pots and pans. Attaches to the ceiling with 2 standard ceiling hooks (not included). Pots and pans are easy to slide on and off the hooks with little effort from you.\r\n\r\n- Supports up to 8 pots or pans.\r\n\r\n- 26 1/2 inches in length.\r\n\r\n- Each hook can support up to 50lbs pot or pan.\r\n\r\n-Chain is at 16” length and can be adjusted shorter by looping the excess unwanted chain onto the ceiling hooks (like seen in pictures)\r\n\r\n-2 1/2” height, 1 1/2” depth and 26 1/2” length of wooden base.\r\n\r\n-With hooks it is 6” height (from bottom hook to top of hook attached to chain), 1 1/2” depth and 26 1/2” length.', '119.99'),
-(2, 2, 'Weather Black- Jewelry Organizer', 'This jewelry holder features REAL roses on it. All flowers come from my house in Asheville, N.C. and is a one-of-a-kind piece.\r\n\r\nNo more tangled jewelry and now you can have your special pieces on display which makes it easier to choose what to wear! If you\'re like me and a visual person this is great to remind yourself of all the beautiful jewelry, you have to pick from.\r\nPersonally, If I don’t see it, I forget to wear it!\r\n\r\nThis Jewelry holder can hold up to 16 necklaces, earrings or brackets.\r\nIt attaches to the wall by two sawtooth hangers on the back.\r\n\r\n- Holds 16 items of jewelry.\r\n\r\n- 16 inches in length.\r\n\r\n-2 1/2” height, 1 1/2” depth and 16” length of wooden base.\r\n\r\n-With hooks it is 3 & 3/8” height (from bottom of hook to top of wood), 1 1/2” depth and 16” length.\r\n\r\nWhen installing, make sure your screw or nails hit a stud in the wall for maximum support.', '89.99'),
-(3, 3, 'Farmhouse Style - Coat Rack', 'Farmhouse style coat/towel rack.\r\n\r\n- features 4 antique brass hooks for hanging.\r\n\r\n- 22 1/16” length\r\n\r\n- 6 14/16” width\r\n\r\n- 1 1/4” depth of wood\r\n- 3 1/2” depth with hooks\r\n\r\n- hooks are 4” height 1 1/2” length and 2” depth.\r\n\r\n- hangs by two keyhole slots on back\r\n\r\n- weighs 2.7 lbs.', '89.00'),
-(4, 4, 'Blank Card with Flowers/ Greeting Card', 'This card features a design with real pressed flowers on the front.\r\n\r\nAll flowers come from my garden in Asheville, North Carolina that I have picked and pressed myself.\r\n\r\nThe rest of the card is blank for you to inscribe anything you want!\r\n\r\nEach card is unique (due to seasonal variation in flowers available) and includes my logo on the back.\r\n\r\nThis card measures:\r\n- 7” height\r\n- 5” wide\r\n\r\nA9 envelope is included with order\r\n- Measures 5-3/4” by 8-3/4”\r\n\r\nCould also be framed and hung on a wall.', '9.99');
+(1, 1, 'Ceiling Hang Pot Rack', 'Wood type: White pine. Color stained- Provincial. This pot rack is made with REAL pressed flowers! Black-eyed Susan flowers are featured on both sides of the pot rack.', '139.99'),
+(2, 2, 'Jewelry Organizer', 'This Jewelry holder can hold up to 16 necklaces, earrings or brackets.\r\nIt attaches to the wall by two sawtooth hangers on the back.\r\n\r\n', '89.99'),
+(3, 3, 'Farmhouse Style - Coat Rack', 'Farmhouse style coat/towel rack.\r\n\r\n- features 4 antique brass hooks for hanging.\r\n', '89.99'),
+(4, 4, 'Blank Card with Flowers', 'This card features a design with real pressed flowers on the front.\r\n\r\n\r\n\r\n', '9.99');
 
 -- --------------------------------------------------------
 
@@ -143,7 +145,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `user_password`, `user_level`, `street_1`, `street_2`, `city`, `state_abbrev`, `zip_code`) VALUES
-(94, 'The test', 'A', 'atest@gmail.com', '08b98e389d4862f7226f57dc52aa7e96', '', 'a', '', 'Asheville', 'KS', '000112');
+(96, 'Luciano', 'Menezes', 'lucky@gmail.com', '732002cec7aeb7987bde842b9e00ee3b', 'a', 'Corsario', '', 'Salvador', 'FL', '28806'),
+(120, 'User', 'Test', 'user_test@email.com', 'bdc87b9c894da5168059e00ebffb9077', 'u', 'Haywood', '', 'Charleston', 'SC', '28808'),
+(121, 'Admin', 'Test', 'admin_test@email.com', 'f1a6339f50768ba71dcc372b484ec318', 'a', 'Waynesville', '', 'Asheville', 'NC', '28810');
 
 --
 -- Indexes for dumped tables
@@ -206,31 +210,31 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- Constraints for dumped tables

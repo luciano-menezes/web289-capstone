@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require_once('../private/initialize.php');
 
 // if this conditions are met, let user in.
