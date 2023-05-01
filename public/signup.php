@@ -1,3 +1,5 @@
+<!-- The reCAPTCHA is not active locally, only on the web host. -->
+
 <?php
 require_once('../private/initialize.php');
 ?>
@@ -54,72 +56,77 @@ if (isset($_POST['signup'])) {
       //if no user registered with this email before
     } else {
 
+
       // Verify reCAPTCHA
-      if (!isset($_POST['g-recaptcha-response'])) {
-        $_SESSION['error'] = 'Please complete the reCAPTCHA verification!';
-        header('location: signup.php');
-        exit;
-      }
 
-      $recaptchaResponse = $_POST['g-recaptcha-response'];
-      $secretKey = "6LcvB88lAAAAADYFejKLo74Bra4_tXH-IEAwd-6v"; // Replace with your Secret Key
-      $ip = $_SERVER['REMOTE_ADDR'];
+      // if (!isset($_POST['g-recaptcha-response'])) {
+      //   $_SESSION['error'] = 'Please complete the reCAPTCHA verification!';
+      //   header('location: signup.php');
+      //   exit;
+      // }
 
-      $url = 'https://www.google.com/recaptcha/api/siteverify';
-      $data = array(
-        'secret' => $secretKey,
-        'response' => $recaptchaResponse,
-        'remoteip' => $ip
-      );
+      // $recaptchaResponse = $_POST['g-recaptcha-response'];
+      // $secretKey = "SECRET_KEY"; // Replace with your Secret Key
+      // $ip = $_SERVER['REMOTE_ADDR'];
 
-      $options = array(
-        'http' => array(
-          'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-          'method' => 'POST',
-          'content' => http_build_query($data)
-        )
-      );
+      // $url = 'https://www.google.com/recaptcha/api/siteverify';
+      // $data = array(
+      //   'secret' => $secretKey,
+      //   'response' => $recaptchaResponse,
+      //   'remoteip' => $ip
+      // );
 
-      $context = stream_context_create($options);
-      $result = file_get_contents($url, false, $context);
-      $response = json_decode($result, true);
+      // $options = array(
+      //   'http' => array(
+      //     'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+      //     'method' => 'POST',
+      //     'content' => http_build_query($data)
+      //   )
+      // );
 
-      // Check if reCAPTCHA verification succeeded
-      if ($response && $response['success']) {
-        // reCAPTCHA verification passed, continue with the signup logic
+      // $context = stream_context_create($options);
+      // $result = file_get_contents($url, false, $context);
+      // $response = json_decode($result, true);
+
+      // // Check if reCAPTCHA verification succeeded
+      // if ($response && $response['success']) {
+      // reCAPTCHA verification passed, continue with the signup logic
 
 
-        //create a new user
-        $stmt = $connection->prepare("INSERT INTO `user` (first_name, last_name, email, user_password, user_level, street_1, street_2, city, state_abbrev, zip_code)
+      //create a new user
+      $stmt = $connection->prepare("INSERT INTO `user` (first_name, last_name, email, user_password, user_level, street_1, street_2, city, state_abbrev, zip_code)
                           VALUES (?,?,?,?,?,?,?,?,?,?)");
-        if (!$stmt) {
-          die("Error: " . mysqli_error($connection));
-        }
-        $stmt->bind_param('ssssssssss', $first_name, $last_name, $email, md5($password), $user_level, $street_1, $street_2, $city, $state, $zip_code);
-        // $stmt->execute();
-        //if account was created successfully  
-        if ($stmt->execute()) {
-          $user_id = $stmt->insert_id;
-          $_SESSION['user_id'] = $user_id;
-          $_SESSION['email'] = $email;
-          $_SESSION['first_name'] = $first_name;
-          $_SESSION['last_name'] = $last_name;
-          $_SESSION['logged_in'] = true;
-
-          // Set session variable with username
-          $_SESSION['username'] = $first_name;
-
-          header('location: account.php?signup_success=You signed up successfully!');
-
-          //account could not be created
-        } else {
-          header('location: signup.php?error=Could not create an account at the moment!');
-        }
-      } else {
-        $_SESSION['error'] = 'reCAPTCHA verification failed!';
-        header('location: signup.php');
-        exit;
+      if (!$stmt) {
+        die("Error: " . mysqli_error($connection));
       }
+      $stmt->bind_param('ssssssssss', $first_name, $last_name, $email, md5($password), $user_level, $street_1, $street_2, $city, $state, $zip_code);
+      // $stmt->execute();
+      //if account was created successfully  
+      if ($stmt->execute()) {
+        $user_id = $stmt->insert_id;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['email'] = $email;
+        $_SESSION['first_name'] = $first_name;
+        $_SESSION['last_name'] = $last_name;
+        $_SESSION['logged_in'] = true;
+
+        // Set session variable with username
+        $_SESSION['username'] = $first_name;
+
+        header('location: account.php?signup_success=You signed up successfully!');
+
+        //account could not be created
+      } else {
+        header('location: signup.php?error=Could not create an account at the moment!');
+      }
+
+      // Verify reCAPTCHA
+
+      // } else {
+      //   $_SESSION['error'] = 'reCAPTCHA verification failed!';
+      //   header('location: signup.php');
+      //   exit;
+      // }
     }
   }
 }
@@ -254,7 +261,7 @@ include(SHARED_PATH . '/header.php');
       </div>
 
       <div class="form-group">
-        <div class="g-recaptcha" data-sitekey="6LcvB88lAAAAAJOl-QP5OMW_83stxnPOB258LKjO"></div>
+        <div class="g-recaptcha" data-sitekey="SITE_KEY"></div> <!-- Replace with your Secret Key -->
       </div>
 
       <div class="form-group">

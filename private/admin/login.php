@@ -1,3 +1,5 @@
+<!-- The reCAPTCHA is not active locally, only on the web host. -->
+
 <?php
 require_once('../initialize.php');
 $page_title = 'Admin Login';
@@ -12,9 +14,39 @@ if (isset($_SESSION['logged_in'])) {
 }
 
 if (isset($_POST['login_btn'])) {
-
   $email = h($_POST['email']);
   $password = md5($_POST['password']);
+
+  // Verify reCAPTCHA
+
+  // if (isset($_POST['g-recaptcha-response'])) {
+  //   // Verify reCAPTCHA response
+  //   $recaptchaResponse = $_POST['g-recaptcha-response'];
+  //   $secretKey = "Secret_KEY"; // Replace with your Secret Key
+  //   $ip = $_SERVER['REMOTE_ADDR'];
+
+  //   $url = 'https://www.google.com/recaptcha/api/siteverify';
+  //   $data = array(
+  //     'secret' => $secretKey,
+  //     'response' => $recaptchaResponse,
+  //     'remoteip' => $ip
+  //   );
+
+  //   $options = array(
+  //     'http' => array(
+  //       'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+  //       'method' => 'POST',
+  //       'content' => http_build_query($data)
+  //     )
+  //   );
+
+  //   $context = stream_context_create($options);
+  //   $result = file_get_contents($url, false, $context);
+  //   $response = json_decode($result, true);
+
+  //   // Check if reCAPTCHA verification succeeded
+  //   if ($response && $response['success']) {
+  // reCAPTCHA verification passed, continue with your login logic
 
   $stmt = $connection->prepare("SELECT user_id, first_name, last_name, email, user_password, user_level FROM `user` WHERE email = ? AND user_password = ? AND user_level = 'a' LIMIT 1");
   $stmt->bind_param('ss', $email, $password);
@@ -43,6 +75,19 @@ if (isset($_POST['login_btn'])) {
     header('location: login.php?error=Something went wrong!');
     exit;
   }
+
+  // Verify reCAPTCHA
+
+  //   } else {
+  //     // reCAPTCHA verification failed, show an error message or take appropriate action
+  //     header('location: login.php?error=reCAPTCHA verification failed!');
+  //     exit;
+  //   }
+  // } else {
+  //   // reCAPTCHA response not present, show an error message or take appropriate action
+  //   header('location: login.php?error=Please complete the reCAPTCHA verification!');
+  //   exit;
+  // }
 }
 ?>
 
@@ -77,6 +122,10 @@ if (isset($_POST['login_btn'])) {
               <div class="form-group mt-2">
                 <label for="product-desc">Password</label>
                 <input type="password" class="form-control" id="product-desc" name="password" placeholder="Password" required />
+              </div>
+
+              <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="SITE_KEY"></div> <!-- Replace with your Site Key -->
               </div>
 
               <div class="form-group mt-3">
