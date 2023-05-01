@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // If there are no errors, send the email and set $success to true
   if (empty($errors)) {
-    $mailTo = 'info@example.com';
+    $mailTo = 'email@luckycapstone.com';
     $headers = "From: " . $mailFrom;
     $txt = "You have received an email from " . $name . ".\n\n" . $message;
 
@@ -68,7 +68,7 @@ include(SHARED_PATH . '/header.php');
           </div>
         <?php } ?>
 
-        <form class="message-form" method="post" action="message_form.php">
+        <form class="message-form" method="post" action="contact_us.php">
           <label for="name">Name</label><br>
           <input type="text" id="name" name="name" placeholder="Full name" value="<?php echo h($name); ?>"><br>
           <label for="email">Email</label><br>
