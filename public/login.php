@@ -15,7 +15,7 @@ if (isset($_POST['login_btn'])) {
   if (isset($_POST['g-recaptcha-response'])) {
     // Verify reCAPTCHA response
     $recaptchaResponse = $_POST['g-recaptcha-response'];
-    $secretKey = "6LcvB88lAAAAADYFejKLo74Bra4_tXH-IEAwd-6v"; // Replace with your Secret Key
+    $secretKey = "SECRET_KEY"; // Replace with your Secret Key
     $ip = $_SERVER['REMOTE_ADDR'];
 
     $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -118,7 +118,7 @@ include(SHARED_PATH . '/header.php');
           <a id="register-url" href="signup.php" class="btn">Don't have an account? Sign Up here!</a>
         </div>
 
-        <!-- <div class="g-recaptcha" data-sitekey="6LcvB88lAAAAAJOl-QP5OMW_83stxnPOB258LKjO"></div> -->
+        <!-- <div class="g-recaptcha" data-sitekey="SITE_KEY"></div> -->
       </form>
 
     </div>
