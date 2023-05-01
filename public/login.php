@@ -1,45 +1,82 @@
 <?php
 require_once('../private/initialize.php');
 
+// Check if reCAPTCHA response is present
+
 if (isset($_SESSION['logged_in'])) {
   header('location: account.php');
   exit;
 }
 
 if (isset($_POST['login_btn'])) {
-
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   $password = md5($_POST['password']);
 
-  $stmt = $connection->prepare("SELECT user_id, first_name, last_name, email, user_password, user_level FROM `user` WHERE email = ? AND user_password = ? AND (user_level = 'a' OR user_level = 'u') LIMIT 1");
-  $stmt->bind_param('ss', $email, $password);
+  if (isset($_POST['g-recaptcha-response'])) {
+    // Verify reCAPTCHA response
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+    $secretKey = "6LcvB88lAAAAADYFejKLo74Bra4_tXH-IEAwd-6v"; // Replace with your Secret Key
+    $ip = $_SERVER['REMOTE_ADDR'];
 
-  if ($stmt->execute()) {
-    $stmt->bind_result($user_id, $first_name, $last_name, $email, $user_password, $user_level);
-    $stmt->store_result();
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = array(
+      'secret' => $secretKey,
+      'response' => $recaptchaResponse,
+      'remoteip' => $ip
+    );
 
-    if ($stmt->num_rows() == 1) {
-      $stmt->fetch();
+    $options = array(
+      'http' => array(
+        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method' => 'POST',
+        'content' => http_build_query($data)
+      )
+    );
 
-      $_SESSION['user_id'] = $user_id;
-      $_SESSION['first_name'] = h($first_name);
-      $_SESSION['last_name'] = h($last_name);
-      $_SESSION['email'] = h($email);
-      $_SESSION['logged_in'] = true;
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    $response = json_decode($result, true);
 
-      // Set session variable with username
-      $_SESSION['username'] = $first_name;
+    // Check if reCAPTCHA verification succeeded
+    if ($response && $response['success']) {
+      // reCAPTCHA verification passed, continue with your login logic
 
-      header('location: index.php?login_success=Logged in successfully!');
+      $stmt = $connection->prepare("SELECT user_id, first_name, last_name, email, user_password, user_level FROM `user` WHERE email = ? AND user_password = ? AND (user_level = 'a' OR user_level = 'u') LIMIT 1");
+      $stmt->bind_param('ss', $email, $password);
+
+      if ($stmt->execute()) {
+        $stmt->bind_result($user_id, $first_name, $last_name, $email, $user_password, $user_level);
+        $stmt->store_result();
+
+        if ($stmt->num_rows() == 1) {
+          $stmt->fetch();
+
+          $_SESSION['user_id'] = $user_id;
+          $_SESSION['first_name'] = h($first_name);
+          $_SESSION['last_name'] = h($last_name);
+          $_SESSION['email'] = h($email);
+          $_SESSION['logged_in'] = true;
+
+          // Set session variable with username
+          $_SESSION['username'] = $first_name;
+
+          header('location: index.php?login_success=Logged in successfully!');
+        } else {
+          header('location: login.php?error=Could not verify your account!');
+        }
+      } else {
+        //error
+        header('location: login.php?error=Something went wrong!');
+      }
     } else {
-      header('location: login.php?error=Could not verify your account!');
+      // reCAPTCHA verification failed, show an error message or take appropriate action
+      header('location: login.php?error=reCAPTCHA verification failed!');
     }
   } else {
-    //error
-    header('location: login.php?error=Something went wrong!');
+    // reCAPTCHA response not present, show an error message or take appropriate action
+    header('location: login.php?error=Please complete the reCAPTCHA verification!');
   }
 }
-// }
 ?>
 
 <?php
@@ -70,6 +107,10 @@ include(SHARED_PATH . '/header.php');
         </div>
 
         <div class="form-group">
+          <div class="g-recaptcha" data-sitekey="6LcvB88lAAAAAJOl-QP5OMW_83stxnPOB258LKjO"></div>
+        </div>
+
+        <div class="form-group">
           <input type="submit" class="btn" id="login-btn" name="login_btn" value="Login">
         </div>
 
@@ -77,7 +118,9 @@ include(SHARED_PATH . '/header.php');
           <a id="register-url" href="signup.php" class="btn">Don't have an account? Sign Up here!</a>
         </div>
 
+        <!-- <div class="g-recaptcha" data-sitekey="6LcvB88lAAAAAJOl-QP5OMW_83stxnPOB258LKjO"></div> -->
       </form>
+
     </div>
   </section>
   <main role="main" id="main-content" tabindex="-1">

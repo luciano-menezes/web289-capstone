@@ -436,6 +436,12 @@ th:last-child {
   color: #3e2e23;
 }
 
+.g-recaptcha {
+  display: flex;
+  justify-content: center;
+  
+}
+
 /************ Sign Up Page *****************/
 
 #signup-form {
@@ -678,6 +684,8 @@ th, td {
 #login-form {
   padding: 0;
 }
+
+
 
 /* Sign Up Page */
 
