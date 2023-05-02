@@ -1,6 +1,13 @@
 <?php
 require_once('../private/initialize.php');
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+  // Redirect to the login page or display an error message
+  header('Location: login.php');
+  exit; // Stop executing the rest of the code
+}
+
 function sanitize_input($input)
 {
   $input = trim($input);

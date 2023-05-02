@@ -36,8 +36,8 @@ body{
 }
 
 #bypass:focus {
-  position: absolute; 
   left: 10px;
+  position: absolute; 
   top: 20px;
   z-index: 2; 
 }
@@ -66,7 +66,6 @@ button {
   width: 100px;
 }
 
-
 /******** Navbar *******/
 
 .nav-buttons {
@@ -79,8 +78,8 @@ button {
   left: 0;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  top: 0;
   position: relative;
+  top: 0;
   z-index: 1;
 }
 
@@ -188,8 +187,8 @@ header h1 {
 }
 
 .product a {
-  text-decoration: none;
   color: #3e2e23;
+  text-decoration: none;
 }
 
 .product .p-name {
@@ -431,10 +430,10 @@ th:last-child {
 /*************** Login Page ***************/
 
 #login-form {
-  width: 50%;
   margin: 5px auto;
-  text-align: center;
   padding: 20px;
+  text-align: center;
+  width: 50%;
 }
 
 #login-form input {
@@ -524,8 +523,8 @@ th:last-child {
 }
 
 #account-form #change-pass-btn {
-  color: #fff;
   background-color: #3e2e23;
+  color: #fff;
 }
 
 .account-info #orders-btn,
@@ -542,9 +541,9 @@ th:last-child {
 }
 
 table {
-  width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
+  max-width: 100%;
+  width: 100%;
 }
 
 th, td {
@@ -552,12 +551,11 @@ th, td {
   text-align: left;
 }
 
-
 /************ Orders ********************/
 
 .orders table{
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 }
 
 .orders .product-info{
@@ -566,10 +564,9 @@ th, td {
 }
 
 .orders th{
-  padding: 5px 20px;
-  color: #fff;
   background-color: #3e2e23;
-  /* text-align: left; */
+  color: #fff;
+  padding: 5px 20px;
 }
 
 .orders th:nth-child(2){
@@ -581,9 +578,9 @@ th, td {
 }
 
 .orders td img{
-  width: 80px;
-  height: 80px;
   margin-right: 10px;
+  height: 80px;
+  width: 80px;
 }
 
 .orders .order-details-btn {
@@ -665,7 +662,6 @@ th, td {
   #banner{
     height: 60vh;
   }
-
 }
 
 /************************* 464 *****************************/
@@ -711,8 +707,6 @@ th, td {
 #login-form {
   padding: 0;
 }
-
-
 
 /* Sign Up Page */
 
