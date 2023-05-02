@@ -128,9 +128,8 @@ include(SHARED_PATH . '/header.php');
 
     </div>
   </section>
-  <main role="main" id="main-content" tabindex="-1">
 
-    <!--Footer-->
-    <?php
-    include(SHARED_PATH . '/footer.php');
-    ?>
+  <!--Footer-->
+  <?php
+  include(SHARED_PATH . '/footer.php');
+  ?>

@@ -1,6 +1,10 @@
 <?php
 require_once('../initialize.php');
-include('admin_header.php');
+
+// Check if the current page requires the sidebar
+$showSidebar = true; // Set this to false for pages where the sidebar is not needed
+
+include(SHARED_PATH . '/admin_header.php');
 ?>
 
 <?php
@@ -88,6 +92,7 @@ if (isset($_GET['product_id'])) {
             <div class="form-group mt-2">
               <label>Category</label>
               <select class="form-select" required name="category">
+                <option value="" disabled selected hidden>Select an option</option>
                 <option value="pot-rack">Ceiling Hang Pot Racks</option>
                 <option value="coat-rack">Coat Rack</option>
                 <option value="greeting-card">Greeting Cards</option>

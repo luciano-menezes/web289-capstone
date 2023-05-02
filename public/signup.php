@@ -200,7 +200,7 @@ include(SHARED_PATH . '/header.php');
 
       <div class="form-group">
         <label for="checkout-state">State</label>
-        <select type="text" class="form-control" id="checkout-state" name="state" placeholder="State" required>
+        <select class="form-control" id="checkout-state" name="state">
           <option value="">Select State</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>

@@ -27,13 +27,13 @@ include(SHARED_PATH . '/header.php');
 ?>
 
 <!--Order Details-->
-<section id="orders" class="orders container my-5 py-3">
-  <div class="container mt-5">
-    <h1 class="font-weight-bold text-center">Order Details</h1>
-    <hr class="mx-auto">
-  </div>
+<main role="main" id="main-content" tabindex="-1">
+  <section id="orders" class="orders container my-5 py-3">
+    <div class="container mt-5">
+      <h1 class="font-weight-bold text-center">Order Details</h1>
+      <hr class="mx-auto">
+    </div>
 
-  <main role="main" id="main-content" tabindex="-1">
     <section>
       <table class="mt-5 pt-5 mx-auto">
         <tr>
@@ -63,7 +63,7 @@ include(SHARED_PATH . '/header.php');
         <?php } ?>
       </table>
     </section>
-  </main>
+</main>
 
 </section>
 

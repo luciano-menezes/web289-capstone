@@ -162,13 +162,28 @@ header h1 {
 }
 
 /****** Products - Home Page ********/
+.product{
+  padding-bottom: 30px;
+}
+.product span {
+  background-color: #3e2e23;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+}
 
-.product {
+.product input {
   cursor: pointer;
   margin-bottom: 2rem;
 }
 
-.product:hover {
+.product input:hover {
   opacity: 0.7;
 }
 
@@ -609,6 +624,12 @@ th, td {
     padding-left: 15px;
   }
 
+  /* Home Page */
+
+  #banner{
+    height: 70vh;
+  }
+
 }
 
 /************************ 855 ******************************/
@@ -638,7 +659,13 @@ th, td {
   #account-form {
     width: 60%;
   }
-  
+
+  /* Home Page */
+
+  #banner{
+    height: 60vh;
+  }
+
 }
 
 /************************* 464 *****************************/

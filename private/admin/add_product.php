@@ -2,6 +2,10 @@
 require_once('../initialize.php');
 
 $page_title = 'Admin New Product';
+
+// Check if the current page requires the sidebar
+$showSidebar = true; // Set this to false for pages where the sidebar is not needed
+
 include(SHARED_PATH . '/admin_header.php');
 ?>
 
@@ -46,6 +50,7 @@ include(SHARED_PATH . '/admin_header.php');
             <div class="form-group mt-2">
               <label for="category">Category</label>
               <select class="form-select" id="category" required name="category">
+                <option value="" hidden>Select a category</option> <!-- Placeholder option with label -->
                 <option value="1">Ceiling Hang Pot Racks</option>
                 <option value="3">Coat Rack</option>
                 <option value="4">Greeting Cards</option>
@@ -55,7 +60,7 @@ include(SHARED_PATH . '/admin_header.php');
 
             <div class="form-group mt-2">
               <label for="image">Image</label>
-              <input type="file" class="form-control" id="image" name="image" placeholder="Image" required />
+              <input type="file" class="form-control" id="image" name="image" required />
             </div>
 
             <div class="form-group mt-3">

@@ -25,7 +25,7 @@ include(SHARED_PATH . '/header.php');
     </div>
 
     <?php
-    $stmt = $connection->prepare("SELECT * FROM product JOIN image ON product.product_id = image.product_id LIMIT 6");
+    $stmt = $connection->prepare("SELECT * FROM product JOIN image ON product.product_id = image.product_id LIMIT 8");
     $stmt->execute();
     $featured_products = $stmt->get_result();
     ?>
@@ -33,17 +33,15 @@ include(SHARED_PATH . '/header.php');
     <div class="row mx-auto container">
       <?php while ($row = $featured_products->fetch_assoc()) { ?>
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <a href="<?php echo h("single_product.php?product_id=" . $row['product_id']); ?>">
+          <a class="buy-btn" href="<?php echo h("single_product.php?product_id=" . $row['product_id']); ?>">
             <img class="img-fluid mb-3" src="<?php echo h("images/" . $row['image_name']); ?>" alt="<?php echo h($row['alt_text']); ?>">
             <h3 class="p-name"><?php echo h($row['product_name']); ?></h3>
             <p class="p-price">$ <?php echo h($row['product_price']); ?></p>
-            <button class="buy-btn">Shop Now</button>
+            <span>Shop Now</span>
           </a>
         </div>
       <?php } ?>
     </div>
-
-
 
   </section>
 </main>

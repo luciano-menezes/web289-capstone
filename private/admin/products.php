@@ -2,6 +2,10 @@
 require_once('../initialize.php');
 
 $page_title = 'Admin Products';
+
+// Check if the current page requires the sidebar
+$showSidebar = true; // Set this to false for pages where the sidebar is not needed
+
 include(SHARED_PATH . '/admin_header.php');
 ?>
 
@@ -130,7 +134,7 @@ $products = $stmt2->get_result();
                 <td><?php echo h($product['product_description']); ?></td>
                 <td><?php echo h("$" . $product['product_price']); ?></td>
 
-                <td><a class="btn btn-warning" href="<?php echo h("edit_images.php?product_id=" . $product['product_id'] . "&product_name=" . $product['product_name']); ?>">Edit</a></td>
+                <td><a class="btn btn-warning" href="<?php echo h("edit_images.php?product_id=" . urlencode($product['product_id']) . "&product_name=" . urlencode($product['product_name'])); ?>">Edit</a></td>
                 <td><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo h($product['product_id']); ?>">Edit</a></td>
                 <td><a class="btn btn-danger" href="delete_product.php?product_id=<?php echo h($product['product_id']); ?>">Delete</a></td>
               </tr>

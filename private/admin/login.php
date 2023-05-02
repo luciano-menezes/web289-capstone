@@ -3,6 +3,10 @@
 <?php
 require_once('../initialize.php');
 $page_title = 'Admin Login';
+
+// Check if the current page requires the sidebar
+$showSidebar = false; // Set this to false for pages where the sidebar is not needed
+
 include(SHARED_PATH . '/admin_header.php');
 ?>
 
@@ -95,7 +99,7 @@ if (isset($_POST['login_btn'])) {
 <div class="container-fluid">
   <div class="" style="min-height: 1000px">
 
-    <main class="col-md-6 mx-auto col-lg-6 px-md-4 text-center">
+    <main class="col-md-6 mx-auto col-lg-6 px-md-4 text-center" role="main" id="main-content" tabindex="-1">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="mx-auto" style="width: 100%;">Login</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -107,35 +111,34 @@ if (isset($_POST['login_btn'])) {
       </div>
 
       <!-- <h2>Login</h2> -->
-      <main role="main" id="main-content" tabindex="-1">
 
-        <div class="table-responsive">
-          <div class="mx-auto container">
-            <form id="login-form" enctype="multipart/form-data" method="POST" action="login.php">
-              <p style="color: red;"><?php if (isset($_GET['error'])) {
-                                        echo h($_GET['error']);
-                                      } ?></p>
-              <div class="form-group mt-2">
-                <label for="product-name">Email</label>
-                <input type="email" class="form-control" id="product-name" name="email" placeholder="Email" required />
-              </div>
-              <div class="form-group mt-2">
-                <label for="product-desc">Password</label>
-                <input type="password" class="form-control" id="product-desc" name="password" placeholder="Password" required />
-              </div>
+      <div class="table-responsive">
+        <div class="mx-auto container">
+          <form id="login-form" enctype="multipart/form-data" method="POST" action="login.php">
+            <p style="color: red;"><?php if (isset($_GET['error'])) {
+                                      echo h($_GET['error']);
+                                    } ?></p>
+            <div class="form-group mt-2">
+              <label for="product-name">Email</label>
+              <input type="email" class="form-control" id="product-name" name="email" placeholder="Email" required />
+            </div>
+            <div class="form-group mt-2">
+              <label for="product-desc">Password</label>
+              <input type="password" class="form-control" id="product-desc" name="password" placeholder="Password" required />
+            </div>
 
-              <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="SITE_KEY"></div> <!-- Replace with your Site Key -->
-              </div>
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="SITE_KEY"></div> <!-- Replace with your Site Key -->
+            </div>
 
-              <div class="form-group mt-3">
-                <input type="submit" class="btn btn-primary" name="login_btn" value="Login" />
-              </div>
+            <div class="form-group mt-3">
+              <input type="submit" class="btn btn-primary" name="login_btn" value="Login" />
+            </div>
 
-            </form>
-          </div>
+          </form>
         </div>
-      </main>
+      </div>
+    </main>
   </div>
 </div>
 </main>

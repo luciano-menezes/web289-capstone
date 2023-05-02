@@ -2,6 +2,11 @@
 require_once('../initialize.php');
 
 $page_title = 'Admin Dashboard';
+
+// Check if the current page requires the sidebar
+$showSidebar = true; // Set this to false for pages where the sidebar is not needed
+
+
 include(SHARED_PATH . '/admin_header.php');
 ?>
 
