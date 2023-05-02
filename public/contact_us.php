@@ -39,11 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $headers = "From: " . $mailFrom;
     $txt = "You have received an email from " . $name . ".\n\n" . $message;
 
-    if (mail($mailTo, $subject, $txt, $headers)) {
-      $success = true;
-    } else {
-      $errors[] = 'There was a problem sending your message. Please try again later.';
-    }
+    //This code block is active live at the web host to send the messages to host email.
+
+    //   if (mail($mailTo, $subject, $txt, $headers)) {
+    //     $success = true;
+    //   } else {
+    //     $errors[] = 'There was a problem sending your message. Please try again later.';
+    //   }
+    $success = true;
   }
 }
 

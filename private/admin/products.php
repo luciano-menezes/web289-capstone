@@ -72,8 +72,6 @@ $products = $stmt2->get_result();
         </div>
       </div>
 
-
-
       <h2>Products</h2>
       <?php if (isset($_GET['edit_success_message'])) { ?>
         <p class="text-center" style="color: green;"><?php echo h($_GET['edit_success_message']); ?></p>
